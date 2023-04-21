@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 
 class listing_Acts extends StatefulWidget {
   CollectionReference Activities;
@@ -493,7 +494,18 @@ class _listing_ActsState extends State<listing_Acts> {
           color: Colors.white,
         ),
         backgroundColor: Color(0xff3C486B),
-        onPressed: (){},
+        onPressed: (){
+          Activities.add({
+            'Tanggal' : tanggalTxt,
+            'Kegiatan 1' : Tugas1,
+            'Kegiatan 2' : Tugas2,
+            'Kegiatan 3' : Tugas3,
+            'Kegiatan 4' : Tugas4,
+            'Kegiatan 5' : Tugas5,
+            'Total Point' : scoreAct1+scoreAct2+scoreAct3+scoreAct4+scoreAct5
+          });
+          Get.back();
+        },
       ),
     );
   }
