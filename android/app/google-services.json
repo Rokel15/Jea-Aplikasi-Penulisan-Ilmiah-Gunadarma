@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "108523461674",
+    "project_id": "penulisan-ilmiah-ca9ff",
+    "storage_bucket": "penulisan-ilmiah-ca9ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108523461674:android:35799080ac411fa2ab3753",
+        "android_client_info": {
+          "package_name": "com.example.aplikasi_pi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108523461674-qffpbvtdlok31m585djghitnce5bncq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVZdoQijHdKIJXRvbVu0NHeNRaXFAKuIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108523461674-qffpbvtdlok31m585djghitnce5bncq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
