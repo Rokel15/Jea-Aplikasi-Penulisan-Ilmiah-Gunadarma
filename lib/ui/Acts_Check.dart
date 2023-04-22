@@ -153,17 +153,18 @@ class _Acts_ChecksState extends State<Acts_Checks> {
             color: Color(0xff3C486B),
             child: Container(
               width: double.infinity,
-              height: 100,
               decoration: BoxDecoration(
-                color: Colors.black45,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
               ),
               child: StreamBuilder<QuerySnapshot>(
                 stream: Activities.snapshots(),
                 builder: (_, snapshot){
-                  return ListView(
-                    children: snapshot.data!.docs.map((e)
-                    => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
+                  return Column(
+                      children: snapshot.data!.docs.map((e)
+                      => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList()
+                    // children: snapshot.data!.docs.map((e)
+                    // => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
                   );
                 },
               ),
@@ -185,7 +186,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
   }
 }
 
-class dataBuilder{
+class dataBuilder extends StatelessWidget{
 
   String tanggal;
 
@@ -195,12 +196,13 @@ class dataBuilder{
   Widget build(BuildContext context){
     return Container(
       width: double.infinity,
-      height: 200,
+      margin: EdgeInsets.only(top: 20, left: 15, right: 15,),
+      padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
       decoration: BoxDecoration(
         color: Colors.deepPurple,
         borderRadius: BorderRadius.circular(20)
       ),
-      child: Text('$tanggal'),
+      child: Center(child: Text('$tanggal')),
     );
   }
 }
