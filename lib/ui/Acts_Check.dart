@@ -105,7 +105,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                   width: 10,
                                 ),
                                 Text(
-                                  'Max . Val = 100',
+                                  'Max. Val = 100',
                                   style: GoogleFonts.lato(
                                     textStyle: TextStyle(
                                       fontSize: 16,
@@ -129,7 +129,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                   width: 10,
                                 ),
                                 Text(
-                                  'Max . Val = 80',
+                                  'Max. Val = 80',
                                   style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                           fontSize: 16,
@@ -148,6 +148,27 @@ class _Acts_ChecksState extends State<Acts_Checks> {
               ],
             ),
           ),
+          Container(
+            width: double.infinity,
+            color: Color(0xff3C486B),
+            child: Container(
+              width: double.infinity,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.black45,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
+              ),
+              child: StreamBuilder<QuerySnapshot>(
+                stream: Activities.snapshots(),
+                builder: (_, snapshot){
+                  return ListView(
+                    children: snapshot.data!.docs.map((e)
+                    => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
+                  );
+                },
+              ),
+            ),
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -160,6 +181,26 @@ class _Acts_ChecksState extends State<Acts_Checks> {
           Get.to(listing_Acts(Activities: Activities));
         },
       ),
+    );
+  }
+}
+
+class dataBuilder{
+
+  String tanggal;
+
+  dataBuilder({required this.tanggal});
+
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      width: double.infinity,
+      height: 200,
+      decoration: BoxDecoration(
+        color: Colors.deepPurple,
+        borderRadius: BorderRadius.circular(20)
+      ),
+      child: Text('$tanggal'),
     );
   }
 }

@@ -498,7 +498,7 @@ class _listing_ActsState extends State<listing_Acts> {
         backgroundColor: Color(0xff3C486B),
         onPressed: (){
           Activities.add({
-            'Tanggal' : tanggalTxt,
+            'Tanggal' : tanggal,
             'Kegiatan 1' : Tugas1,
             'Kegiatan 2' : Tugas2,
             'Kegiatan 3' : Tugas3,
