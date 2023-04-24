@@ -160,12 +160,23 @@ class _Acts_ChecksState extends State<Acts_Checks> {
               child: StreamBuilder<QuerySnapshot>(
                 stream: Activities.snapshots(),
                 builder: (_, snapshot){
-                  return Column(
-                      children: snapshot.data!.docs.map((e)
-                      => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList()
-                    // children: snapshot.data!.docs.map((e)
-                    // => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
-                  );
+                  if (snapshot.hasData){
+                    return Column(
+                        children: snapshot.data!.docs.map((e)
+                        => dataBuilder(
+                          tanggal:
+                          (e.data() as dynamic)['Tanggal'].toString()
+                          // (e.data() as dynamic)['Tanggal'].toString() //konversi timestamp ke String(gagal, tulisan ga beraturan)
+                          // DateFormat.yMd().format((e.data() as dynamic)['Tanggal']).toString() //masih belum solved, timestamp gagal dikonversi
+                          // DateFormat.yMd().format(DateTime.tryParse((e.data() as dynamic)['Tanggal'])).toString() //masih gagal dikonversi dari timestamp, padahal timestamp sudah dibungkus ke DateTime.tryParse
+                        )).toList()
+                      // children: snapshot.data!.docs.map((e) => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
+                      // cast<Widget> untuk mengkonversi ke Widget, digunakan jika suatu class bukan suatu widget
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+
                 },
               ),
             ),
@@ -200,9 +211,18 @@ class dataBuilder extends StatelessWidget{
       padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
       decoration: BoxDecoration(
         color: Colors.deepPurple,
-        borderRadius: BorderRadius.circular(20)
+        borderRadius: BorderRadius.circular(15)
       ),
-      child: Center(child: Text('$tanggal')),
+      child: Center(child: Text(
+        '$tanggal',
+        style: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.white
+          )
+        ),
+      )),
     );
   }
 }

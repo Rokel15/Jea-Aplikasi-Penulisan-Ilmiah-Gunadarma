@@ -41,6 +41,7 @@ class _listing_ActsState extends State<listing_Acts> {
 
   DateTime tanggal = DateTime.now();
   String tanggalTxt = 'Atur tanggal';
+  String inputTgl = 'Kesalahan Input';
 
   Future<Null> pilihTanggal(BuildContext context) async {
     DateTime? setTgl = await showDatePicker(
@@ -53,6 +54,7 @@ class _listing_ActsState extends State<listing_Acts> {
       setState(() {
         tanggal = setTgl;
         tanggalTxt = DateFormat.yMd().format(tanggal).toString();
+        inputTgl = DateFormat.yMd().format(tanggal).toString();
       });
     }
   }
@@ -498,7 +500,7 @@ class _listing_ActsState extends State<listing_Acts> {
         backgroundColor: Color(0xff3C486B),
         onPressed: (){
           Activities.add({
-            'Tanggal' : tanggalTxt,
+            'Tanggal' : inputTgl,
             'Kegiatan 1' : Tugas1,
             'Kegiatan 2' : Tugas2,
             'Kegiatan 3' : Tugas3,
