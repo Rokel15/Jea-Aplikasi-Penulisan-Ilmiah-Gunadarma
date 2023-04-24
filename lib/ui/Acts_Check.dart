@@ -160,7 +160,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
+                    margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 17),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -168,16 +168,13 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Check Avtivities!',
+                              'Check Activities!',
                                 style: GoogleFonts.lato(
                                     textStyle: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
                                     )
                                 )
-                            ),
-                            SizedBox(
-                              width: 5,
                             ),
                             Icon(
                               Icons.help_outline
@@ -208,13 +205,19 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                               children: snapshot.data!.docs.map((e)
                               => dataBuilder(
                                 tanggal:
-                                (e.data() as dynamic)['Tanggal'].toString()
+                                (e.data() as dynamic)['Tanggal'].toString(),
                                 // (e.data() as dynamic)['Tanggal'].toString() //konversi timestamp ke String(gagal, tulisan ga beraturan)
                                 // DateFormat.yMd().format((e.data() as dynamic)['Tanggal']).toString() //masih belum solved, timestamp gagal dikonversi
                                 // DateFormat.yMd().format(DateTime.tryParse((e.data() as dynamic)['Tanggal'])).toString() //masih gagal dikonversi dari timestamp, padahal timestamp sudah dibungkus ke DateTime.tryParse
+
+                                // children: snapshot.data!.docs.map((e) => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
+                                // cast<Widget> untuk mengkonversi ke Widget, digunakan jika suatu class bukan suatu widget
+
+                                nilai:
+                                (e.data() as dynamic)['Total Nilai'],
+                                kategori:
+                                (e.data() as dynamic)['Kategori'],
                               )).toList()
-                            // children: snapshot.data!.docs.map((e) => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
-                            // cast<Widget> untuk mengkonversi ke Widget, digunakan jika suatu class bukan suatu widget
                           );
                         } else {
                           return CircularProgressIndicator();
@@ -245,29 +248,74 @@ class _Acts_ChecksState extends State<Acts_Checks> {
 class dataBuilder extends StatelessWidget{
 
   String tanggal;
+  int nilai;
+  int kategori;
 
-  dataBuilder({required this.tanggal});
+  dataBuilder({
+    required this.tanggal,
+    required this.nilai,
+    required this.kategori
+  });
 
   @override
   Widget build(BuildContext context){
     return Container(
       width: double.infinity,
       margin: EdgeInsets.only(top: 10, left: 15, right: 15,),
-      padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
+      padding: EdgeInsets.only(top: 10, left: 10, right: 5, bottom: 10),
       decoration: BoxDecoration(
-        color: Colors.deepPurple,
+        color: kategori==0?Colors.deepPurple:Colors.pink[600],
         borderRadius: BorderRadius.circular(15)
       ),
-      child: Center(child: Text(
-        '$tanggal',
-        style: GoogleFonts.lato(
-          textStyle: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Colors.white
-          )
-        ),
-      )),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //retrieve tanggal
+              Text(
+                '$tanggal',
+                style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                  )
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              //retrieve total nilai
+              Text(
+                'Total Nilai : $nilai',
+                style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                  )
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              //hapus
+              Text(
+                'Hapus',
+                style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white
+                  )
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

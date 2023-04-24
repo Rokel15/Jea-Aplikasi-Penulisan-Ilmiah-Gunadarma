@@ -219,7 +219,7 @@ class _listing_ActsState extends State<listing_Acts> {
                         ),
                       ),
                       subtitle: Text(
-                        'score : ${this.score}',
+                        'Nilai : ${this.score}',
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                                 fontSize: 13,
@@ -262,7 +262,7 @@ class _listing_ActsState extends State<listing_Acts> {
                         ),
                       ),
                       subtitle: Text(
-                        'score : ${score}',
+                        'Nilai : ${score}',
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                                 fontSize: 13,
@@ -305,7 +305,7 @@ class _listing_ActsState extends State<listing_Acts> {
                         ),
                       ),
                       subtitle: Text(
-                        'score : ${score}',
+                        'Nilai : ${score}',
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                                 fontSize: 13,
@@ -348,7 +348,7 @@ class _listing_ActsState extends State<listing_Acts> {
                         ),
                       ),
                       subtitle: Text(
-                        'score : ${score}',
+                        'Nilai : ${score}',
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                                 fontSize: 13,
@@ -391,7 +391,7 @@ class _listing_ActsState extends State<listing_Acts> {
                         ),
                       ),
                       subtitle: Text(
-                        'score : ${score}',
+                        'Nilai : ${score}',
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                                 fontSize: 13,
@@ -474,7 +474,7 @@ class _listing_ActsState extends State<listing_Acts> {
                     padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: ListTile(
                       leading: Text(
-                        'Total Score : ${scoreAct1+scoreAct2+scoreAct3+scoreAct4+scoreAct5}',
+                        'Total Nilai : ${scoreAct1+scoreAct2+scoreAct3+scoreAct4+scoreAct5}',
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                                 fontSize: 14,
@@ -506,7 +506,8 @@ class _listing_ActsState extends State<listing_Acts> {
             'Kegiatan 3' : Tugas3,
             'Kegiatan 4' : Tugas4,
             'Kegiatan 5' : Tugas5,
-            'Total Point' : scoreAct1+scoreAct2+scoreAct3+scoreAct4+scoreAct5
+            'Total Nilai' : scoreAct1+scoreAct2+scoreAct3+scoreAct4+scoreAct5,
+            'Kategori' : pilihKategori
           });
           Get.back();
         },
