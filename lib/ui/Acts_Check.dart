@@ -22,7 +22,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
         children: [
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 40),
+            padding: EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30),
             color: Color(0xff3C486B),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,30 +154,75 @@ class _Acts_ChecksState extends State<Acts_Checks> {
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
               ),
-              child: StreamBuilder<QuerySnapshot>(
-                stream: Activities.snapshots(),
-                builder: (_, snapshot){
-                  if (snapshot.hasData){
-                    return Column(
-                        children: snapshot.data!.docs.map((e)
-                        => dataBuilder(
-                          tanggal:
-                          (e.data() as dynamic)['Tanggal'].toString()
-                          // (e.data() as dynamic)['Tanggal'].toString() //konversi timestamp ke String(gagal, tulisan ga beraturan)
-                          // DateFormat.yMd().format((e.data() as dynamic)['Tanggal']).toString() //masih belum solved, timestamp gagal dikonversi
-                          // DateFormat.yMd().format(DateTime.tryParse((e.data() as dynamic)['Tanggal'])).toString() //masih gagal dikonversi dari timestamp, padahal timestamp sudah dibungkus ke DateTime.tryParse
-                        )).toList()
-                      // children: snapshot.data!.docs.map((e) => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
-                      // cast<Widget> untuk mengkonversi ke Widget, digunakan jika suatu class bukan suatu widget
-                    );
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-
-                },
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Check Avtivities!',
+                                style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                    )
+                                )
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              Icons.help_outline
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.black
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream: Activities.snapshots(),
+                      builder: (_, snapshot){
+                        if (snapshot.hasData){
+                          return Column(
+                              children: snapshot.data!.docs.map((e)
+                              => dataBuilder(
+                                tanggal:
+                                (e.data() as dynamic)['Tanggal'].toString()
+                                // (e.data() as dynamic)['Tanggal'].toString() //konversi timestamp ke String(gagal, tulisan ga beraturan)
+                                // DateFormat.yMd().format((e.data() as dynamic)['Tanggal']).toString() //masih belum solved, timestamp gagal dikonversi
+                                // DateFormat.yMd().format(DateTime.tryParse((e.data() as dynamic)['Tanggal'])).toString() //masih gagal dikonversi dari timestamp, padahal timestamp sudah dibungkus ke DateTime.tryParse
+                              )).toList()
+                            // children: snapshot.data!.docs.map((e) => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
+                            // cast<Widget> untuk mengkonversi ke Widget, digunakan jika suatu class bukan suatu widget
+                          );
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           )
@@ -207,7 +252,7 @@ class dataBuilder extends StatelessWidget{
   Widget build(BuildContext context){
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(top: 20, left: 15, right: 15,),
+      margin: EdgeInsets.only(top: 10, left: 15, right: 15,),
       padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
       decoration: BoxDecoration(
         color: Colors.deepPurple,

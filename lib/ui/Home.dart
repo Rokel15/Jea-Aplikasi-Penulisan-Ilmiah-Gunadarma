@@ -167,18 +167,26 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+                    margin: EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'About App',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'About App',
+                              style: GoogleFonts.lato(
+                                textStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w600,
+                                )
+                              )
+                            ),
+                            Icon(
+                              Icons.help_outline
                             )
-                          )
+                          ],
                         ),
                         SizedBox(
                           height: 3,
@@ -195,7 +203,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+                    margin: EdgeInsets.all(20),
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Color(0xff354259),
@@ -269,7 +277,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+                    margin: EdgeInsets.all(20),
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Color(0xff635985),
