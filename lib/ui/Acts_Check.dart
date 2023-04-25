@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class Acts_Checks extends StatefulWidget {
   Acts_Checks({Key? key}) : super(key: key);
@@ -46,7 +45,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 25),
+                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
                 child: Center(
                     child: Text(
                       'This screen displays track records of employees daily values',
@@ -59,8 +58,23 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                       ),
                     )),
               ),
+              Container(
+                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
+                child: Center(
+                    child: Text(
+                      'you can also delete the old track record and add a new track record or more',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+                          )
+                      ),
+                    )),
+              ),
               GestureDetector(
                 child: Container(
+                  margin: EdgeInsets.only(bottom: 8),
                   padding: EdgeInsets.only(top: 10, left: 20, right: 20 ,bottom: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -86,8 +100,6 @@ class _Acts_ChecksState extends State<Acts_Checks> {
 
       ],
     );
-
-
 
     showDialog(
         context: context,
