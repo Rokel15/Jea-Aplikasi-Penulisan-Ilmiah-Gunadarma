@@ -13,6 +13,89 @@ class Acts_Checks extends StatefulWidget {
 }
 
 class _Acts_ChecksState extends State<Acts_Checks> {
+
+  Future<Null> Check_Acts(BuildContext context) async{
+    var simpleDialog = SimpleDialog(
+      title: Container(
+        width: double.infinity,
+        padding: EdgeInsets.only(top: 5, bottom: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.black,
+        ),
+        child: Center(
+          child: Text(
+            'Check Activities',
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white
+              )
+            ),
+          ),
+        ),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10)
+      ),
+      // backgroundColor: Colors.black87,
+      children: <Widget>[
+        Material(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 25),
+                child: Center(
+                    child: Text(
+                      'This screen displays track records of employees daily values',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600
+                        )
+                      ),
+                    )),
+              ),
+              GestureDetector(
+                child: Container(
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20 ,bottom: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.grey[600]
+                  ),
+                  child: Text(
+                    'Ok',
+                    style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      )
+                    )
+                  ),
+                ),
+                onTap: (){
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        ),
+
+      ],
+    );
+
+
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return simpleDialog;
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -176,8 +259,13 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                     )
                                 )
                             ),
-                            Icon(
-                              Icons.help_outline
+                            GestureDetector(
+                              child: Icon(
+                                Icons.help_outline
+                              ),
+                              onTap: (){
+                                Check_Acts(context);
+                              },
                             )
                           ],
                         ),
@@ -269,51 +357,90 @@ class dataBuilder extends StatelessWidget{
       ),
       child: Row(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //retrieve tanggal
-              Text(
-                '$tanggal',
-                style: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white
-                  )
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //retrieve tanggal
+                Text(
+                  '$tanggal',
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white
+                    )
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              //retrieve total nilai
-              Text(
-                'Total Nilai : $nilai',
-                style: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white
-                  )
+                SizedBox(
+                  height: 8,
                 ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              //hapus
-              Text(
-                'Hapus',
-                style: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white
-                  )
+                //retrieve total nilai
+                Text(
+                  'Total Nilai : $nilai',
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white
+                    )
+                  ),
                 ),
-              )
-            ],
+                SizedBox(
+                  height: 8,
+                ),
+                //hapus
+                GestureDetector(
+                  child: Row(
+                    children: [
+                      Text(
+                        'Hapus',
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white
+                          )
+                        ),
+                      ),
+                      Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                  onTap: (){
+
+                  },
+                )
+              ],
+            ),
           ),
+          Container(
+            width: 2,
+            margin: EdgeInsets.only(right: 3),
+            height: 90,
+            color: Colors.white,
+          ),
+          GestureDetector(
+            child: RotatedBox(
+              quarterTurns: 3,
+              child: Text(
+                'See Detail',
+                style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white
+                  )
+                ),
+              ),
+            ),
+            onTap: (){
+
+            },
+          )
         ],
       ),
     );
