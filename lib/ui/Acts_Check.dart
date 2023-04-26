@@ -1,5 +1,5 @@
-import 'package:aplikasi_pi/ui/See_Detail.dart';
-import 'package:aplikasi_pi/ui/listing_Acts.dart';
+import 'package:aplikasi_pi/ui/widgets/See_Detail.dart';
+import 'package:aplikasi_pi/ui/widgets/listing_Acts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -305,7 +305,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                         if (snapshot.hasData){
                           return Column(
                               children: snapshot.data!.docs.map((e)
-                              => dataBuilder(
+                              => dataReader(
                                 tanggal:
                                 (e.data() as dynamic)['Tanggal'].toString(),
                                 // (e.data() as dynamic)['Tanggal'].toString() //konversi timestamp ke String(gagal, tulisan ga beraturan)
@@ -320,7 +320,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                 kategori:
                                 (e.data() as dynamic)['Kategori'],
                                 onShow: (){
-                                  Get.to(See_Detail());
+                                  Get.to(See_Detail(Activities: Activities,));
                                 },
                                 onDelete: (){
                                   Activities.doc(e.id).delete();
@@ -355,7 +355,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
   }
 }
 
-class dataBuilder extends StatelessWidget{
+class dataReader extends StatelessWidget{
 
   String tanggal;
   int nilai;
@@ -363,7 +363,7 @@ class dataBuilder extends StatelessWidget{
   Function onShow;
   Function onDelete;
 
-  dataBuilder({
+  dataReader({
     required this.tanggal,
     required this.nilai,
     required this.kategori,
