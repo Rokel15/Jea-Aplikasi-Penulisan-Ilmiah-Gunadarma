@@ -13,6 +13,88 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  Future<Null> Welcome_to_App(BuildContext context) async{
+    var simpleDialog = SimpleDialog(
+      title: Container(
+        width: double.infinity,
+        padding: EdgeInsets.only(top: 5, bottom: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.black,
+        ),
+        child: Center(
+          child: Text(
+            'Home Page',
+            style: GoogleFonts.lato(
+                textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                )
+            ),
+          ),
+        ),
+      ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+      ),
+      // backgroundColor: Colors.black87,
+      children: <Widget>[
+        Material(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
+                child: Center(
+                    child: Text(
+                      'Welcome to the app, this screen is home page. The displays contains features introduction and features whatever you want to use directly',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+                          )
+                      ),
+                    )),
+              ),
+              GestureDetector(
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 8),
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20 ,bottom: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.grey[600]
+                  ),
+                  child: Text(
+                      'Ok',
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          )
+                      )
+                  ),
+                ),
+                onTap: (){
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        ),
+
+      ],
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return simpleDialog;
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,8 +265,13 @@ class _HomeState extends State<Home> {
                                 )
                               )
                             ),
-                            Icon(
-                              Icons.help_outline
+                            GestureDetector(
+                              child: Icon(
+                                Icons.help_outline
+                              ),
+                              onTap: (){
+                                Welcome_to_App(context);
+                              },
                             )
                           ],
                         ),

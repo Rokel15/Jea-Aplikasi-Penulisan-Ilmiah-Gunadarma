@@ -62,7 +62,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                 padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
                 child: Center(
                     child: Text(
-                      'you can also delete the old track record and add a new track record or more',
+                      'You can also delete the old track record and add a new track record or more',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
@@ -298,7 +298,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                   Container(
                     width: double.infinity,
                     child: StreamBuilder<QuerySnapshot>(
-                      stream: Activities.snapshots(),
+                      stream: Activities.orderBy('Tanggal', descending: true).snapshots(),
                       builder: (_, snapshot){
                         if (snapshot.hasData){
                           return Column(
