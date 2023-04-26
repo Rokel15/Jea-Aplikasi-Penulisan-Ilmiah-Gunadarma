@@ -1,3 +1,4 @@
+import 'package:aplikasi_pi/ui/See_Detail.dart';
 import 'package:aplikasi_pi/ui/listing_Acts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,6 +87,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                       textStyle: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
+                        color: Colors.white
                       )
                     )
                   ),
@@ -317,10 +319,18 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                 (e.data() as dynamic)['Total Nilai'],
                                 kategori:
                                 (e.data() as dynamic)['Kategori'],
+                                onShow: (){
+                                  Get.to(See_Detail());
+                                },
+                                onDelete: (){
+                                  Activities.doc(e.id).delete();
+                                },
                               )).toList()
                           );
                         } else {
-                          return CircularProgressIndicator();
+                          return Center(
+                              child: CircularProgressIndicator()
+                          );
                         }
                       },
                     ),
@@ -350,11 +360,15 @@ class dataBuilder extends StatelessWidget{
   String tanggal;
   int nilai;
   int kategori;
+  Function onShow;
+  Function onDelete;
 
   dataBuilder({
     required this.tanggal,
     required this.nilai,
-    required this.kategori
+    required this.kategori,
+    required this.onShow,
+    required this.onDelete
   });
 
   @override
@@ -423,7 +437,7 @@ class dataBuilder extends StatelessWidget{
                     ],
                   ),
                   onTap: (){
-
+                    onDelete();
                   },
                 )
               ],
@@ -450,7 +464,7 @@ class dataBuilder extends StatelessWidget{
               ),
             ),
             onTap: (){
-
+              onShow();
             },
           )
         ],

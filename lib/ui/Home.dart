@@ -73,6 +73,7 @@ class _HomeState extends State<Home> {
                           textStyle: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
+                            color: Colors.white
                           )
                       )
                   ),
