@@ -1,5 +1,5 @@
-import 'package:aplikasi_pi/ui/widgets/See_Detail.dart';
-import 'package:aplikasi_pi/ui/widgets/listing_Acts.dart';
+import 'package:aplikasi_pi/ui/See_Detail.dart';
+import 'package:aplikasi_pi/ui/listing_Acts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -319,8 +319,13 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                 (e.data() as dynamic)['Total Nilai'],
                                 kategori:
                                 (e.data() as dynamic)['Kategori'],
-                                onShow: (){
-                                  Get.to(See_Detail(Activities: Activities,));
+                                onShow: () async{
+                                  DocumentSnapshot documentSnapshot = await Activities.doc(e.id).get();
+                                  Get.to(
+                                      See_Detail(
+                                        documentSnapshot: documentSnapshot,
+                                      )
+                                  );
                                 },
                                 onDelete: (){
                                   Activities.doc(e.id).delete();
