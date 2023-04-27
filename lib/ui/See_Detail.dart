@@ -3,11 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class See_Detail extends StatelessWidget {
-  // CollectionReference Activities;
+
   DocumentSnapshot documentSnapshot;
+
   See_Detail({
     required this.documentSnapshot
-    // required this.Activities,
   });
 
   @override
