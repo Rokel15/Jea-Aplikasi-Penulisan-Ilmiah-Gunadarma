@@ -52,7 +52,10 @@ class detail extends StatelessWidget {
   detail({
     required this.Ask_data,
   });
-  
+
+  String dikerjakan = 'dikerjakan';
+  String tdk_dikerjakan = 'tidak dikerjakan';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -91,8 +94,15 @@ class detail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Maintenance Sirkulasi Udara dan Pergantian Pakan Minum Pada Ayam'),
-                Text('Status : '),
-                Text('Nilai : ')
+                Text(
+                  Ask_data['Kegiatan 1']=='Maintenance Sirkulasi Udara dan Pergantian Pakan Minum Pada Ayam'?
+                  'Status\t: Dikerjakan' :'Status\t: Tidak Dikerjakan',
+                ),
+                Text(
+                  Ask_data['Kegiatan 1']=='Maintenance Sirkulasi Udara dan Pergantian Pakan Minum Pada Ayam'?
+                  'Nilai\t: 20':'Nilai\t: 0',
+
+                )
               ],
             ),
           ),
@@ -102,8 +112,12 @@ class detail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Vaksinasi dan Pemberian Obat Berkala Pada Ayam'),
-                Text('Status : '),
-                Text('Nilai : ')
+                Text(Ask_data['Kegiatan 2']=='Vaksinasi dan Pemberian Obat Berkala Pada Ayam'?
+                'Status\t: Dikerjakan' :'Status\t: Tidak Dikerjakan',
+                ),
+                Text(Ask_data['Kegiatan 2']=='Vaksinasi dan Pemberian Obat Berkala Pada Ayam'?
+                'Nilai\t: 20':'Nilai\t: 0',
+                )
               ],
             ),
           ),
@@ -113,8 +127,12 @@ class detail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Menjaga Kebersihan Rutin Kandang'),
-                Text('Status : '),
-                Text('Nilai : ')
+                Text(Ask_data['Kegiatan 3']=='Menjaga Kebersihan Rutin Kandang'?
+                'Status\t: Dikerjakan' :'Status\t: Tidak Dikerjakan',
+                ),
+                Text(Ask_data['Kegiatan 3']=='Menjaga Kebersihan Rutin Kandang'?
+                'Nilai\t: 20':'Nilai\t: 0',
+                )
               ],
             ),
           ),
@@ -124,7 +142,9 @@ class detail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Pelebaran Sekat Kandang Ayam Berkala'),
-                Text('Status : '),
+                Text(
+                  'Status : ',
+                ),
                 Text('Nilai : ')
               ],
             ),
@@ -135,8 +155,12 @@ class detail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Check Kondisi Ayam (Sehat/Sakit/Mati'),
-                Text('Status : '),
-                Text('Nilai : ')
+                Text(Ask_data['Kegiatan 5']=='Check Kondisi Ayam (Sehat/Sakit/Mati)'?
+                  'Status\t: Dikerjakan' :'Status\t: Tidak Dikerjakan',
+                ),
+                Text(Ask_data['Kegiatan 5']=='Check Kondisi Ayam (Sehat/Sakit/Mati)'?
+                'Nilai\t: 20':'Nilai\t: 0',
+                )
               ],
             ),
           ),
