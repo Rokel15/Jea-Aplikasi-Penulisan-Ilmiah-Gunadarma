@@ -477,5 +477,3 @@ class dataReader extends StatelessWidget{
     );
   }
 }
-
-//silahkan check disini
