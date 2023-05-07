@@ -115,11 +115,15 @@ class _Acts_ChecksState extends State<Acts_Checks> {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     CollectionReference Activities = firestore.collection('Activities');
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(0),
+        child: AppBar(),
+      ),
       body: ListView(
         children: [
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30),
+            padding: EdgeInsets.only(top: 14, left: 15, right: 15, bottom: 30),
             color: Color(0xff3C486B),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
