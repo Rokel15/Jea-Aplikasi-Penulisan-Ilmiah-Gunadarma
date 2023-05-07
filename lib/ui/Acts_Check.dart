@@ -119,56 +119,22 @@ class _Acts_ChecksState extends State<Acts_Checks> {
         preferredSize: Size.fromHeight(0),
         child: AppBar(),
       ),
-      body: ListView(
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.only(top: 14, left: 15, right: 15, bottom: 30),
-            color: Color(0xff3C486B),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      'Activities',
-                      style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          )
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.width / 4,
-                      width: MediaQuery.of(context).size.width / 4,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child:
-                      Center(
-                        child: Icon(
-                          Icons.list_alt,
-                          size: MediaQuery.of(context).size.width / 5.2,
-                        )
-                      ),
-                    ),
-                  ]
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+      body: Material(
+        color: Colors.white,
+        child: ListView(
+          children: [
+            //head
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.only(top: 14, left: 15, right: 15, bottom: 30),
+              color: Color(0xff3C486B),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
                     children: [
                       Text(
-                        'Keterangan',
+                        'Activities',
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                               fontSize: 18,
@@ -181,174 +147,213 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                         height: 20,
                       ),
                       Container(
-                        padding: EdgeInsets.only(top: 11, left: 15, bottom: 11),
-                        width: double.infinity,
                         height: MediaQuery.of(context).size.width / 4,
+                        width: MediaQuery.of(context).size.width / 4,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  height: MediaQuery.of(context).size.width / 12,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    color: Colors.deepPurple,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Max. Val = 100',
-                                  style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600
-                                    )
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  height: MediaQuery.of(context).size.width / 12,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    color: Colors.pink[600],
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Max. Val = 80',
-                                  style: GoogleFonts.lato(
-                                      textStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600
-                                      )
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
+                        child:
+                        Center(
+                          child: Icon(
+                            Icons.list_alt,
+                            size: MediaQuery.of(context).size.width / 5.2,
+                          )
                         ),
                       ),
-                    ],
+                    ]
                   ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            color: Color(0xff3C486B),
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 17),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Check Activities!',
-                                style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                    )
-                                )
-                            ),
-                            GestureDetector(
-                              child: Icon(
-                                Icons.help_outline
-                              ),
-                              onTap: (){
-                                Check_Acts(context);
-                              },
-                            )
-                          ],
+                        Text(
+                          'Keterangan',
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              )
+                          ),
                         ),
                         SizedBox(
-                          height: 3,
+                          height: 20,
                         ),
                         Container(
+                          padding: EdgeInsets.only(top: 11, left: 15, bottom: 11),
                           width: double.infinity,
-                          height: 5,
+                          height: MediaQuery.of(context).size.width / 4,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.black
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                        )
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: MediaQuery.of(context).size.width / 12,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: Colors.deepPurple,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    'Max. Val = 100',
+                                    style: GoogleFonts.lato(
+                                      textStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600
+                                      )
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    height: MediaQuery.of(context).size.width / 12,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: Colors.pink[600],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    'Max. Val = 80',
+                                    style: GoogleFonts.lato(
+                                        textStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600
+                                        )
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: StreamBuilder<QuerySnapshot>(
-                      stream: Activities.orderBy('Tanggal', descending: true).snapshots(),
-                      builder: (_, snapshot){
-                        if (snapshot.hasData){
-                          return Column(
-                              children: snapshot.data!.docs.map((e)
-                              => dataReader(
-                                tanggal:
-                                (e.data() as dynamic)['Tanggal'].toString(),
-                                // (e.data() as dynamic)['Tanggal'].toString() //konversi timestamp ke String(gagal, tulisan ga beraturan)
-                                // DateFormat.yMd().format((e.data() as dynamic)['Tanggal']).toString() //masih belum solved, timestamp gagal dikonversi
-                                // DateFormat.yMd().format(DateTime.tryParse((e.data() as dynamic)['Tanggal'])).toString() //masih gagal dikonversi dari timestamp, padahal timestamp sudah dibungkus ke DateTime.tryParse
-
-                                // children: snapshot.data!.docs.map((e) => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
-                                // cast<Widget> untuk mengkonversi ke Widget, digunakan jika suatu class bukan suatu widget
-
-                                nilai:
-                                (e.data() as dynamic)['Total Nilai'],
-                                kategori:
-                                (e.data() as dynamic)['Kategori'],
-                                onShow: () async{
-                                  DocumentSnapshot documentSnapshot = await Activities.doc(e.id).get();
-                                  Get.to(
-                                      See_Detail(
-                                        documentSnapshot: documentSnapshot,
-                                      )
-                                  );
-                                },
-                                onDelete: (){
-                                  Activities.doc(e.id).delete();
-                                },
-                              )).toList()
-                          );
-                        } else {
-                          return Center(
-                              child: CircularProgressIndicator()
-                          );
-                        }
-                      },
-                    ),
-                  ),
+                  )
                 ],
               ),
             ),
-          )
-        ],
+            //body
+            Container(
+              width: double.infinity,
+              color: Color(0xff3C486B),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 17),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Check Activities!',
+                                  style: GoogleFonts.lato(
+                                      textStyle: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                      )
+                                  )
+                              ),
+                              GestureDetector(
+                                child: Icon(
+                                  Icons.help_outline
+                                ),
+                                onTap: (){
+                                  Check_Acts(context);
+                                },
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 5,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.black
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      child: StreamBuilder<QuerySnapshot>(
+                        stream: Activities.orderBy('Tanggal', descending: true).snapshots(),
+                        builder: (_, snapshot){
+                          if (snapshot.hasData){
+                            return Column(
+                                children: snapshot.data!.docs.map((e)
+                                => dataReader(
+                                  tanggal:
+                                  (e.data() as dynamic)['Tanggal'].toString(),
+                                  // (e.data() as dynamic)['Tanggal'].toString() //konversi timestamp ke String(gagal, tulisan ga beraturan)
+                                  // DateFormat.yMd().format((e.data() as dynamic)['Tanggal']).toString() //masih belum solved, timestamp gagal dikonversi
+                                  // DateFormat.yMd().format(DateTime.tryParse((e.data() as dynamic)['Tanggal'])).toString() //masih gagal dikonversi dari timestamp, padahal timestamp sudah dibungkus ke DateTime.tryParse
+
+                                  // children: snapshot.data!.docs.map((e) => dataBuilder(tanggal: (e.data() as dynamic)['Tanggal'])).toList().cast<Widget>()
+                                  // cast<Widget> untuk mengkonversi ke Widget, digunakan jika suatu class bukan suatu widget
+
+                                  nilai:
+                                  (e.data() as dynamic)['Total Nilai'],
+                                  kategori:
+                                  (e.data() as dynamic)['Kategori'],
+                                  onShow: () async{
+                                    DocumentSnapshot documentSnapshot = await Activities.doc(e.id).get();
+                                    Get.to(
+                                        See_Detail(
+                                          documentSnapshot: documentSnapshot,
+                                        )
+                                    );
+                                  },
+                                  onDelete: (){
+                                    Activities.doc(e.id).delete();
+                                  },
+                                )).toList()
+                            );
+                          } else {
+                            return Center(
+                                child: CircularProgressIndicator()
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
