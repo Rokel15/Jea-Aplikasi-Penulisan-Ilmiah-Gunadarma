@@ -114,7 +114,8 @@ class _Afkeur extends State<Afkeur> {
         child: AppBar(),
       ),
       body: Material(
-        color: Color(0xff393E46),
+        color: Colors.white,
+        // color: Color(0xff393E46),
         child: ListView(
           children: [
             //head
@@ -167,7 +168,8 @@ class _Afkeur extends State<Afkeur> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xff393E46),
+                  color: Colors.white,
+                  // color: Color(0xff393E46),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                 ),
                 child: Column(
@@ -181,19 +183,17 @@ class _Afkeur extends State<Afkeur> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                  'Check Activities!',
+                                  'Afkeur List!',
                                   style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.white
                                       )
                                   )
                               ),
                               GestureDetector(
                                 child: Icon(
                                   Icons.help_outline,
-                                  color: Colors.white,
                                 ),
                                 onTap: (){
                                   Check_Afkeur(context);
@@ -209,7 +209,7 @@ class _Afkeur extends State<Afkeur> {
                             height: 5,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Colors.white
+                                color: Colors.black
                             ),
                           )
                         ],
