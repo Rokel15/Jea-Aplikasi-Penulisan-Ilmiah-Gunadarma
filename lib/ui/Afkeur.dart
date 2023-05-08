@@ -115,7 +115,6 @@ class _Afkeur extends State<Afkeur> {
       ),
       body: Material(
         color: Colors.white,
-        // color: Color(0xff393E46),
         child: ListView(
           children: [
             //head
@@ -169,7 +168,6 @@ class _Afkeur extends State<Afkeur> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  // color: Color(0xff393E46),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                 ),
                 child: Column(
