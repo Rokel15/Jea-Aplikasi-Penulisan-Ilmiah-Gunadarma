@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:aplikasi_pi/ArticleModel.dart';
 
 class Articles extends StatefulWidget {
   const Articles({Key? key}) : super(key: key);
@@ -42,24 +44,10 @@ class _Articles extends State<Articles> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
-                child: Center(
-                    child: Text(
-                      'This screen displays track records of employees daily values',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600
-                          )
-                      ),
-                    )),
-              ),
-              Container(
                 padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
                 child: Center(
                     child: Text(
-                      'You can also delete the old track record and add a new track record or more',
+                      'This screen displays list of a few articles, click it therefore you can read the articles',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
@@ -181,7 +169,7 @@ class _Articles extends State<Articles> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                  'Afkeur List!',
+                                  'Articles!',
                                   style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                         fontSize: 20,
@@ -215,15 +203,84 @@ class _Articles extends State<Articles> {
                         ],
                       ),
                     ),
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      child: MasonryGridView.count(
+                        mainAxisSpacing: 4,
+                        crossAxisSpacing: 4,
+                        crossAxisCount: 2,
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: listArticle.length,
+                        itemBuilder: (context, index){
+                          final article = listArticle[index];
+                          return InkWell(
+                            child: buildArticle(articleModel: article, index: index),
+                            onTap: (){
 
+                            },
+                          );
+                        },
+                      ),
+                    )
                   ],
                 ),
               ),
-            )
-
+            ),
           ],
         ),
       )
+    );
+  }
+}
+
+class buildArticle extends StatelessWidget{
+  ArticleModel articleModel;
+  int index;
+
+  buildArticle({
+    required this.articleModel,
+    required this.index,
+  });
+
+  Color? getColor(int index){
+    switch(index % 4){
+      case 0:
+        return Colors.teal[300];
+      case 1:
+        return Color(0xffF45050);
+      case 2:
+        return Color(0xff9E6F21);
+      case 3:
+        return Color(0xff6D9886);
+    }
+  }
+
+  double getMinHeight(int index){
+    switch(index % 4){
+      case 0:
+        return 100;
+      case 1:
+        return 150;
+      case 2:
+        return 150;
+      case 3:
+        return 100;
+      default:
+        return 100;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context){
+    return Card(
+      color: getColor(index),
+      child: Container(
+        constraints: BoxConstraints(
+          minHeight: getMinHeight(index)
+        ),
+      ),
     );
   }
 }
