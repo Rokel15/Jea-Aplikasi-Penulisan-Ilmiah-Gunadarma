@@ -1,3 +1,4 @@
+import 'package:aplikasi_pi/ui/Articles/ShowArticle.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -102,7 +103,7 @@ class _Articles extends State<Articles> {
         child: AppBar(),
       ),
       body: Material(
-        color: Color(0xff393E46),
+        color: Colors.white,
         child: ListView(
           children: [
             //head
@@ -216,7 +217,7 @@ class _Articles extends State<Articles> {
                           return InkWell(
                             child: buildArticle(articleModel: article, index: index),
                             onTap: (){
-
+                              Get.to(ShowArticle(articleModel: article));
                             },
                           );
                         },
@@ -258,15 +259,15 @@ class buildArticle extends StatelessWidget{
   double getMinHeight(int index){
     switch(index % 4){
       case 0:
-        return 100;
+        return 60;
       case 1:
-        return 150;
+        return 100;
       case 2:
-        return 150;
+        return 100;
       case 3:
-        return 100;
+        return 60;
       default:
-        return 100;
+        return 80;
     }
   }
 
