@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:aplikasi_pi/ArticleModel.dart';
+import 'package:aplikasi_pi/ui/Articles/ArticleModel.dart';
 import 'package:get/get.dart';
 
 class Articles extends StatefulWidget {
