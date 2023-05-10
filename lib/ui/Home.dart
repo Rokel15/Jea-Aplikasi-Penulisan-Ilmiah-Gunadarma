@@ -1,4 +1,4 @@
-import 'package:aplikasi_pi/ui/Afkeur.dart';
+import 'package:aplikasi_pi/ui/Afkeur/Afkeur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:aplikasi_pi/ui/Activities/Acts_Check.dart';

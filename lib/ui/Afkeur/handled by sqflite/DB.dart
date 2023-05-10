@@ -1,5 +1,5 @@
-import 'package:aplikasi_pi/handled%20by%20sqflite/AfkeurModel.dart';
 import 'package:sqflite/sqflite.dart';
+import 'AfkeurModel.dart';
 
 class DB{
 

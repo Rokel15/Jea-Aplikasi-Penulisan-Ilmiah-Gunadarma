@@ -1,6 +1,6 @@
-import 'package:aplikasi_pi/handled%20by%20sqflite/AfkeurModel.dart';
-import 'package:aplikasi_pi/handled%20by%20sqflite/DB.dart';
 import 'package:get/get.dart';
+import 'AfkeurModel.dart';
+import 'DB.dart';
 
 class AfkeurController extends GetxController{
 
