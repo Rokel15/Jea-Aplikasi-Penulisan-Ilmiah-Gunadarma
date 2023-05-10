@@ -1,5 +1,5 @@
-import 'package:aplikasi_pi/ui/See_Detail.dart';
-import 'package:aplikasi_pi/ui/listing_Acts.dart';
+import 'package:aplikasi_pi/ui/Activities/See_Detail.dart';
+import 'package:aplikasi_pi/ui/Activities/listing_Acts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

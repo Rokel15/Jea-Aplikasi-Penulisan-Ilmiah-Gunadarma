@@ -1,7 +1,7 @@
 import 'package:aplikasi_pi/ui/Afkeur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:aplikasi_pi/ui/Acts_Check.dart';
+import 'package:aplikasi_pi/ui/Activities/Acts_Check.dart';
 import 'package:aplikasi_pi/ui/Articles.dart';
 import 'package:google_fonts/google_fonts.dart';
 

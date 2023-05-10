@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:aplikasi_pi/ArticleModel.dart';
+import 'package:get/get.dart';
 
 class Articles extends StatefulWidget {
   const Articles({Key? key}) : super(key: key);
@@ -47,7 +48,7 @@ class _Articles extends State<Articles> {
                 padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
                 child: Center(
                     child: Text(
-                      'This screen displays list of a few articles, click it therefore you can read the articles',
+                      'This screen displays list of a few articles, click it therefore you can read the article you want',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
@@ -83,7 +84,6 @@ class _Articles extends State<Articles> {
             ],
           ),
         ),
-
       ],
     );
 
@@ -155,7 +155,7 @@ class _Articles extends State<Articles> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xff393E46),
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                 ),
                 child: Column(
@@ -174,14 +174,12 @@ class _Articles extends State<Articles> {
                                       textStyle: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.white
                                       )
                                   )
                               ),
                               GestureDetector(
                                 child: Icon(
                                   Icons.help_outline,
-                                  color: Colors.white,
                                 ),
                                 onTap: (){
                                   Check_Afkeur(context);
@@ -197,7 +195,7 @@ class _Articles extends State<Articles> {
                             height: 5,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Colors.white
+                                color: Colors.black
                             ),
                           )
                         ],
