@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class Afkeur extends StatefulWidget {
   const Afkeur({Key? key}) : super(key: key);
@@ -216,23 +217,28 @@ class _Afkeur extends State<Afkeur> {
                     Container(
                       width: double.infinity,
                       padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Add data',
-                            style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600
+                      child: GestureDetector(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Add data',
+                              style: GoogleFonts.lato(
+                                textStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(width: 10),
-                          Icon(
-                            Icons.add_circle_outline,
-                          )
-                        ],
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.add_circle_outline,
+                            )
+                          ],
+                        ),
+                        onTap: (){
+                          showBottomSheet(context);
+                        },
                       ),
                     )
                   ],
@@ -244,4 +250,25 @@ class _Afkeur extends State<Afkeur> {
       )
     );
   }
+
+  showBottomSheet(BuildContext context){
+    Get.bottomSheet(
+      Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height / 4.5,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30)
+          ),
+          border: Border.all(color: Colors.black)
+        ),
+
+      ),
+    );
+  }
+
 }
+
+
