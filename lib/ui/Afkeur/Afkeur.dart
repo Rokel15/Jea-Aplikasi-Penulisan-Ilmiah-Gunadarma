@@ -173,7 +173,7 @@ class _Afkeur extends State<Afkeur> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 17),
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 25),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -213,7 +213,28 @@ class _Afkeur extends State<Afkeur> {
                         ],
                       ),
                     ),
-
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Add data',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Icon(
+                            Icons.add_circle_outline,
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
