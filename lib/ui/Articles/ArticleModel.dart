@@ -21,7 +21,7 @@ List<ArticleModel> listArticle = [
   ),
   ArticleModel(
     namaArticle: 'CCNA MQ IT ACAADEMY 17 agustus.pdf',
-    pdfUrl: 'assetes/CCNA MQ IT ACAADEMY 17 agustus.pdf',
+    pdfUrl: 'assets/CCNA MQ IT ACAADEMY 17 agustus.pdf',
   ),
   ArticleModel(
     namaArticle: 'ccna-ibrahim-smktarunabhaktidepok.pdf',

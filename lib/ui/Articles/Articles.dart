@@ -279,6 +279,7 @@ class buildArticle extends StatelessWidget{
         constraints: BoxConstraints(
           minHeight: getMinHeight(index)
         ),
+        child: Center(),
       ),
     );
   }
