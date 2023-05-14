@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class Afkeur extends StatefulWidget {
   const Afkeur({Key? key}) : super(key: key);
@@ -237,7 +239,7 @@ class _Afkeur extends State<Afkeur> {
                           ],
                         ),
                         onTap: (){
-                          showBottomSheet(context);
+                         showBottomSheet();
                         },
                       ),
                     )
@@ -251,10 +253,38 @@ class _Afkeur extends State<Afkeur> {
     );
   }
 
-  showBottomSheet(BuildContext context){
-    String _startDate = DateTime.now().toString();
-    String _endDate = 'atur tanggal perkiraan berakhir';
+  String startDate = 'atur tanggal mulai';
+  String endDate = 'atur tanggal perkiraan berakhir';
 
+  Future<Null> pilihTanggalMulai(BuildContext context) async {
+    DateTime? setTglMulai = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2022),
+        lastDate: DateTime(2030));
+
+    if (setTglMulai != null && setTglMulai != DateTime.now()) {
+      setState(() {
+        startDate = DateFormat.yMMMd().format(setTglMulai).toString();
+      });
+    }
+  }
+
+  Future<Null> pilihTanggalBerakhir(BuildContext context) async {
+    DateTime? setTglMulai = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2022),
+        lastDate: DateTime(2030));
+
+    if (setTglMulai != null && setTglMulai != DateTime.now()) {
+      setState(() {
+        endDate = DateFormat.yMMMd().format(setTglMulai).toString();
+      });
+    }
+  }
+
+  showBottomSheet(){
     Get.bottomSheet(
       Container(
         width: double.infinity,
@@ -265,8 +295,8 @@ class _Afkeur extends State<Afkeur> {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30)
-          ),
-          border: Border.all(color: Colors.black)
+            ),
+            border: Border.all(color: Colors.black)
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -276,7 +306,7 @@ class _Afkeur extends State<Afkeur> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Perkiraan Berakhir :'),
+                  Text('Mulai :'),
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
@@ -290,19 +320,24 @@ class _Afkeur extends State<Afkeur> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Text(
-                            '$_endDate',
+                          child:
+                          Text(
+                            '${startDate}',
                             style: GoogleFonts.lato(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600
-                                )
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 8),
-                          child: Icon(Icons.calendar_today_rounded),
+                          child: GestureDetector(
+                              child: Icon(Icons.calendar_today_rounded),
+                              onTap: (){
+                                pilihTanggalMulai(context);
+                              }
+                          ),
                         ),
                       ],
                     ),
@@ -330,18 +365,24 @@ class _Afkeur extends State<Afkeur> {
                       children: [
                         Expanded(
                           child: Text(
-                            '$_endDate',
+                            '$endDate',
                             style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600
-                              )
+                                textStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.grey
+                                )
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 8),
-                          child: Icon(Icons.calendar_today_rounded),
+                          child: GestureDetector(
+                            child: Icon(Icons.calendar_today_rounded),
+                            onTap: (){
+                              pilihTanggalBerakhir(context);
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -361,11 +402,11 @@ class _Afkeur extends State<Afkeur> {
                         child: Container(
                           height: 50,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(13),
-                            border: Border.all(
-                              width: 2,
-                              color: Colors.black
-                            )
+                              borderRadius: BorderRadius.circular(13),
+                              border: Border.all(
+                                  width: 2,
+                                  color: Colors.black
+                              )
                           ),
                         ),
                       ),
@@ -379,9 +420,9 @@ class _Afkeur extends State<Afkeur> {
                         child: Text(
                           'add new',
                           style: GoogleFonts.lato(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white
                           ),
                         ),
                       )
