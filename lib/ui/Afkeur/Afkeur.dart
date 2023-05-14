@@ -222,7 +222,7 @@ class _Afkeur extends State<Afkeur> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Add data',
+                              'Add datum/data',
                               style: GoogleFonts.lato(
                                 textStyle: TextStyle(
                                   fontSize: 14,
@@ -252,10 +252,14 @@ class _Afkeur extends State<Afkeur> {
   }
 
   showBottomSheet(BuildContext context){
+    String _startDate = DateTime.now().toString();
+    String _endDate = 'atur tanggal perkiraan berakhir';
+
     Get.bottomSheet(
       Container(
         width: double.infinity,
-        height: MediaQuery.of(context).size.height / 4.5,
+        height: MediaQuery.of(context).size.height / 2.7,
+        padding: EdgeInsets.only(top: 25, left: 15, right: 15),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -264,11 +268,131 @@ class _Afkeur extends State<Afkeur> {
           ),
           border: Border.all(color: Colors.black)
         ),
-
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 7),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Perkiraan Berakhir :'),
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        color: Colors.white,
+                        border: Border.all(
+                            width: 2,
+                            color: Colors.black
+                        )
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            '$_endDate',
+                            style: GoogleFonts.lato(
+                                textStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600
+                                )
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Icon(Icons.calendar_today_rounded),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 7),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Perkiraan Berakhir :'),
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        color: Colors.white,
+                        border: Border.all(
+                            width: 2,
+                            color: Colors.black
+                        )
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            '$_endDate',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              )
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Icon(Icons.calendar_today_rounded),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 7),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Jumlah :'),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(13),
+                            border: Border.all(
+                              width: 2,
+                              color: Colors.black
+                            )
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 8),
+                        padding: EdgeInsets.only(top: 13, left: 20, right: 20, bottom: 13),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xff3C486B),
+                        ),
+                        child: Text(
+                          'add new',
+                          style: GoogleFonts.lato(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
-
 }
-
-
