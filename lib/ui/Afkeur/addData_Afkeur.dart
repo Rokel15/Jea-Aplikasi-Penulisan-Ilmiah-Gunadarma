@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 
 class addData_Afkeur extends StatefulWidget {
   const addData_Afkeur({Key? key}) : super(key: key);
@@ -269,7 +270,9 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
           color: Colors.white,
         ),
         backgroundColor: Color(0xff3C486B),
-        onPressed: (){},
+        onPressed: (){
+          Get.back();
+        },
       ),
     );
   }
