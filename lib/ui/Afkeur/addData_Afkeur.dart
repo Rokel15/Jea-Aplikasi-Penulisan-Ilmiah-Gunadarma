@@ -50,154 +50,226 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
       ),
       body: Material(
         color: Color(0xff3F497F),
-        child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.only(top: 25, left: 20, right: 20, bottom: 25),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(30),
-                  topLeft: Radius.circular(30)
+        child: Material(
+          color: Colors.white,
+          child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.only(top: 25, left: 20, right: 20, bottom: 25),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30)
+                ),
+                color: Colors.white,
               ),
-              color: Colors.white,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: 7),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Mulai :'),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13),
-                              color: Colors.white,
-                              border: Border.all(
-                                  width: 2,
-                                  color: Colors.black
-                              )
-                          ),
-                          child: Row(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 5, bottom: 13),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Expanded(
-                                child:
-                                Text(
-                                  '${startDate}',
-                                  style: GoogleFonts.lato(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.grey
-                                  ),
+                              Text(
+                                'Add new data',
+                                style: GoogleFonts.lato(
+                                  textStyle: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600
+                                  )
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8),
-                                child: GestureDetector(
-                                    child: Icon(Icons.calendar_today_rounded),
-                                    onTap: (){
-                                      pilihTanggalMulai(context);
-                                    }
-                                ),
-                              ),
+                              Icon(Icons.edit)
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 7),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Perkiraan Berakhir :'),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13),
-                              color: Colors.white,
-                              border: Border.all(
-                                  width: 2,
-                                  color: Colors.black
-                              )
+                          SizedBox(
+                            height: 5,
                           ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  '$endDate',
-                                  style: GoogleFonts.lato(
-                                      textStyle: TextStyle(
+                          Container(
+                            width: double.infinity,
+                            height: 3,
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 5, bottom: 13),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Mulai :',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              )
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(13),
+                                color: Colors.white,
+                                border: Border.all(
+                                    width: 2,
+                                    color: Colors.black
+                                )
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child:
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      '${startDate}',
+                                      style: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.grey
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8),
+                                  child: GestureDetector(
+                                      child: Icon(Icons.calendar_today_rounded),
+                                      onTap: (){
+                                        pilihTanggalMulai(context);
+                                      }
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 5, bottom: 13),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Perkiraan Berakhir :',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              )
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(13),
+                                color: Colors.white,
+                                border: Border.all(
+                                    width: 2,
+                                    color: Colors.black
+                                )
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      '$endDate',
+                                      style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.grey
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8),
+                                  child: GestureDetector(
+                                    child: Icon(Icons.calendar_today_rounded),
+                                    onTap: (){
+                                      pilihTanggalBerakhir(context);
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 5, bottom: 13),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Jumlah :'),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(13),
+                                      border: Border.all(
+                                          width: 2,
+                                          color: Colors.black
                                       )
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8),
-                                child: GestureDetector(
-                                  child: Icon(Icons.calendar_today_rounded),
-                                  onTap: (){
-                                    pilihTanggalBerakhir(context);
-                                  },
+                              Container(
+                                margin: EdgeInsets.only(left: 8),
+                                padding: EdgeInsets.only(top: 13, left: 20, right: 20, bottom: 13),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xff3C486B),
                                 ),
-                              ),
+                                child: Text(
+                                  'add new',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white
+                                  ),
+                                ),
+                              )
                             ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 7),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Jumlah :'),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(13),
-                                    border: Border.all(
-                                        width: 2,
-                                        color: Colors.black
-                                    )
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 8),
-                              padding: EdgeInsets.only(top: 13, left: 20, right: 20, bottom: 13),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff3C486B),
-                              ),
-                              child: Text(
-                                'add new',
-                                style: GoogleFonts.lato(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.arrow_back_ios_new_rounded,
+          color: Colors.white,
+        ),
+        backgroundColor: Color(0xff3C486B),
+        onPressed: (){},
       ),
     );
   }
