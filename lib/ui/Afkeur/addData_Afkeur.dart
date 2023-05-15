@@ -55,8 +55,8 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
             padding: EdgeInsets.only(top: 25, left: 20, right: 20, bottom: 25),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(28),
-                  topLeft: Radius.circular(28)
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30)
               ),
               color: Colors.white,
             ),
