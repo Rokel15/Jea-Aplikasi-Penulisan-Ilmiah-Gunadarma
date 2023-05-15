@@ -1,8 +1,8 @@
+import 'package:aplikasi_pi/ui/Afkeur/addData_Afkeur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 
 class Afkeur extends StatefulWidget {
   const Afkeur({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class Afkeur extends StatefulWidget {
 }
 
 class _Afkeur extends State<Afkeur> {
-
   Future<Null> Check_Afkeur(BuildContext context) async{
     var simpleDialog = SimpleDialog(
       title: Container(
@@ -38,7 +37,6 @@ class _Afkeur extends State<Afkeur> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10)
       ),
-      // backgroundColor: Colors.black87,
       children: <Widget>[
         Material(
           color: Colors.white,
@@ -98,7 +96,6 @@ class _Afkeur extends State<Afkeur> {
             ],
           ),
         ),
-
       ],
     );
 
@@ -218,7 +215,7 @@ class _Afkeur extends State<Afkeur> {
                     ),
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.only(left: 20, right: 20),
+                      padding: EdgeInsets.only(left: 20),
                       child: GestureDetector(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -239,10 +236,10 @@ class _Afkeur extends State<Afkeur> {
                           ],
                         ),
                         onTap: (){
-                         showBottomSheet();
+                          Get.to(addData_Afkeur());
                         },
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -250,190 +247,6 @@ class _Afkeur extends State<Afkeur> {
           ],
         ),
       )
-    );
-  }
-
-  String startDate = 'atur tanggal mulai';
-  String endDate = 'atur tanggal perkiraan berakhir';
-
-  Future<Null> pilihTanggalMulai(BuildContext context) async {
-    DateTime? setTglMulai = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2022),
-        lastDate: DateTime(2030));
-
-    if (setTglMulai != null && setTglMulai != DateTime.now()) {
-      setState(() {
-        startDate = DateFormat.yMMMd().format(setTglMulai).toString();
-      });
-    }
-  }
-
-  Future<Null> pilihTanggalBerakhir(BuildContext context) async {
-    DateTime? setTglMulai = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2022),
-        lastDate: DateTime(2030));
-
-    if (setTglMulai != null && setTglMulai != DateTime.now()) {
-      setState(() {
-        endDate = DateFormat.yMMMd().format(setTglMulai).toString();
-      });
-    }
-  }
-
-  showBottomSheet(){
-    Get.bottomSheet(
-      Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height / 2.7,
-        padding: EdgeInsets.only(top: 25, left: 15, right: 15),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30)
-            ),
-            border: Border.all(color: Colors.black)
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              margin: EdgeInsets.only(bottom: 7),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Mulai :'),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13),
-                        color: Colors.white,
-                        border: Border.all(
-                            width: 2,
-                            color: Colors.black
-                        )
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child:
-                          Text(
-                            '${startDate}',
-                            style: GoogleFonts.lato(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.grey
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: GestureDetector(
-                              child: Icon(Icons.calendar_today_rounded),
-                              onTap: (){
-                                pilihTanggalMulai(context);
-                              }
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(bottom: 7),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Perkiraan Berakhir :'),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13),
-                        color: Colors.white,
-                        border: Border.all(
-                            width: 2,
-                            color: Colors.black
-                        )
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            '$endDate',
-                            style: GoogleFonts.lato(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.grey
-                                )
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: GestureDetector(
-                            child: Icon(Icons.calendar_today_rounded),
-                            onTap: (){
-                              pilihTanggalBerakhir(context);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(bottom: 7),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Jumlah :'),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13),
-                              border: Border.all(
-                                  width: 2,
-                                  color: Colors.black
-                              )
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 8),
-                        padding: EdgeInsets.only(top: 13, left: 20, right: 20, bottom: 13),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xff3C486B),
-                        ),
-                        child: Text(
-                          'add new',
-                          style: GoogleFonts.lato(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
