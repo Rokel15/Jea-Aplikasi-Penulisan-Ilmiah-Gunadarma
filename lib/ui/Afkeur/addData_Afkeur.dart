@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
@@ -41,6 +42,8 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
       });
     }
   }
+
+  TextEditingController inputJumlah_controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -135,10 +138,16 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Text(
                                       '${startDate}',
-                                      style: GoogleFonts.lato(
+                                      style: startDate=='atur tanggal mulai'?
+                                      GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.grey
+                                      ):
+                                      GoogleFonts.lato(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black
                                       ),
                                     ),
                                   ),
@@ -192,12 +201,18 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Text(
                                       '$endDate',
-                                      style: GoogleFonts.lato(
+                                      style: endDate=='atur tanggal perkiraan berakhir'?
+                                      GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.grey
                                           )
+                                      ):
+                                      GoogleFonts.lato(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black
                                       ),
                                     ),
                                   ),
@@ -222,7 +237,18 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Jumlah :'),
+                          Text(
+                            'Jumlah :',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              )
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
                           Row(
                             children: [
                               Expanded(
@@ -235,23 +261,47 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                           color: Colors.black
                                       )
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 8),
-                                padding: EdgeInsets.only(top: 13, left: 20, right: 20, bottom: 13),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xff3C486B),
-                                ),
-                                child: Text(
-                                  'add new',
-                                  style: GoogleFonts.lato(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10, right: 5),
+                                    child: TextFormField(
+                                      controller: inputJumlah_controller,
+                                      keyboardType: TextInputType.number,
+                                      inputFormatters: <TextInputFormatter>[
+                                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+                                      ],
+                                      style: GoogleFonts.lato(
+                                        textStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600
+                                        )
+                                      ),
+                                      decoration: InputDecoration(
+                                        hintText: 'fuck you',
+                                      ),
+                                    ),
                                   ),
                                 ),
+                              ),
+                              GestureDetector(
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  padding: EdgeInsets.only(top: 13, left: 20, right: 20, bottom: 13),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff3C486B),
+                                  ),
+                                  child: Text(
+                                    'add new',
+                                    style: GoogleFonts.lato(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white
+                                    ),
+                                  ),
+                                ),
+                                onTap: (){
+                                  Get.back();
+                                },
                               )
                             ],
                           ),
