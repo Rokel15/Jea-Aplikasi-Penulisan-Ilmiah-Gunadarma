@@ -45,6 +45,14 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
 
   TextEditingController inputJumlah_controller = TextEditingController();
 
+  List<String> listKondisi = ['Produktif', 'tidak produktif'];
+  String kondisiAwal = 'Produktif';
+  void onChanged_kondisi(String? value){
+    setState(() {
+      kondisiAwal = value!;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -240,10 +248,10 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                           Text(
                             'Jumlah :',
                             style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600
-                              )
+                                textStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600
+                                )
                             ),
                           ),
                           SizedBox(
@@ -270,16 +278,81 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                         FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                                       ],
                                       style: GoogleFonts.lato(
-                                        textStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600
-                                        )
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600
+                                          )
                                       ),
                                       decoration: InputDecoration(
-                                        hintText: 'fuck you',
+                                        hintText: 'masukkan jumlah anak ayam',
                                       ),
                                     ),
                                   ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 5, bottom: 13),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Kondisi :',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              )
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(13),
+                                      border: Border.all(
+                                          width: 2,
+                                          color: Colors.black
+                                      )
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: DropdownButton(
+                                          value: kondisiAwal,
+                                          items: listKondisi.map((String e)
+                                          => DropdownMenuItem(
+                                              value: e,
+                                              child: Text(e)
+                                          )).toList(),
+                                          onChanged: (String? value){
+                                            onChanged_kondisi(value);
+                                          },
+                                        ),
+                                  ),
+                                  // child: Padding(
+                                  //   padding: const EdgeInsets.only(left: 10, right: 5),
+                                  //   child:
+                                  //   DropdownButton(
+                                  //     value: kondisiAwal,
+                                  //     items: listKondisi.map((String e)
+                                  //     => DropdownMenuItem(
+                                  //         value: e,
+                                  //         child: Text(e)
+                                  //     )).toList(),
+                                  //     onChanged: (String? value){
+                                  //       onChanged_kondisi(value);
+                                  //     },
+                                  //   ),
+                                  // ),
                                 ),
                               ),
                               GestureDetector(
