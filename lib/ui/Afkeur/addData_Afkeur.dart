@@ -338,21 +338,6 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                           },
                                         ),
                                   ),
-                                  // child: Padding(
-                                  //   padding: const EdgeInsets.only(left: 10, right: 5),
-                                  //   child:
-                                  //   DropdownButton(
-                                  //     value: kondisiAwal,
-                                  //     items: listKondisi.map((String e)
-                                  //     => DropdownMenuItem(
-                                  //         value: e,
-                                  //         child: Text(e)
-                                  //     )).toList(),
-                                  //     onChanged: (String? value){
-                                  //       onChanged_kondisi(value);
-                                  //     },
-                                  //   ),
-                                  // ),
                                 ),
                               ),
                               GestureDetector(
