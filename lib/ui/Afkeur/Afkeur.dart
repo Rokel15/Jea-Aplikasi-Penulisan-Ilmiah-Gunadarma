@@ -1,4 +1,5 @@
 import 'package:aplikasi_pi/ui/Afkeur/addData_Afkeur.dart';
+import 'package:aplikasi_pi/ui/Afkeur/handled%20by%20sqflite/AfkeurController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -12,6 +13,16 @@ class Afkeur extends StatefulWidget {
 }
 
 class _Afkeur extends State<Afkeur> {
+
+  final AfkeurController afkeurController = Get.put(AfkeurController());
+
+  @override
+  void initState(){
+    super.initState();
+    afkeurController.getAfkeurData();
+  }
+
+
   Future<Null> Check_Afkeur(BuildContext context) async{
     var simpleDialog = SimpleDialog(
       title: Container(
