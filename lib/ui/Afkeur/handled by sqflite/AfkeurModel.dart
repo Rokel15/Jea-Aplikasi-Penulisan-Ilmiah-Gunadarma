@@ -7,10 +7,10 @@ class AfkeurModel{
 
   AfkeurModel({
     this.id,
-    this.startDate,
-    this.jumlahAyam,
-    this.kondisi,
-    this.endDate,
+    required this.startDate,
+    required this.jumlahAyam,
+    required this.kondisi,
+    required this.endDate,
   });
 
   //toJson

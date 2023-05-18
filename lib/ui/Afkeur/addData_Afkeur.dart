@@ -1,3 +1,4 @@
+import 'package:aplikasi_pi/ui/Afkeur/handled%20by%20sqflite/AfkeurModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,6 +33,7 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
       });
     }
   }
+
   Future<Null> pilihTanggalBerakhir(BuildContext context) async {
     DateTime? setTglMulai = await showDatePicker(
         context: context,
@@ -49,10 +51,16 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
   TextEditingController inputJumlah_controller = TextEditingController();
 
   List<String> listKondisi = ['Produktif', 'tidak produktif'];
+  int valKondisi = 0;
   String kondisiAwal = 'Produktif';
   void onChanged_kondisi(String? value){
     setState(() {
       kondisiAwal = value!;
+      if(kondisiAwal=='Produktif'){
+        valKondisi = 1;
+      } else{
+        valKondisi = 0;
+      }
     });
   }
 
@@ -373,6 +381,13 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                       icon: Icon(Icons.warning, color: Colors.black,)
                                   );
                                 } else{
+                                  afkeurController.addAfkeur(
+                                    afkeurModel: AfkeurModel(
+                                        startDate: startDate,
+                                        jumlahAyam: int.parse(inputJumlah_controller.text),
+                                        kondisi: valKondisi,
+                                        endDate: endDate),
+                                  );
                                   Get.back();
                                 }
                               },
