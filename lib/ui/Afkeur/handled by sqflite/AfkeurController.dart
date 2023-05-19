@@ -19,6 +19,7 @@ class AfkeurController extends GetxController{
 
   /*input atau tambah data*/
   Future<int> addAfkeur({required AfkeurModel? afkeurModel}) async{
+    // await DB.initDb();
     return await DB.insert(afkeurModel!);
   }
 
@@ -34,6 +35,6 @@ class AfkeurController extends GetxController{
 
   //update kondisi menjadi 1
   void kondisi1(int id) async{
-    await DB.updateKondisi0(id);
+    await DB.updateKondisi1(id);
   }
 }

@@ -10,7 +10,7 @@ class DB{
     if(database!=null){
       return;
     } try{
-      String path = await getDatabasesPath() + 'afkeur.db';
+      String path = await getDatabasesPath() + '/afkeur.db';
       database = await openDatabase(
           path,
           version: 1,

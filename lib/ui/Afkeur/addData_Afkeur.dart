@@ -35,15 +35,15 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
   }
 
   Future<Null> pilihTanggalBerakhir(BuildContext context) async {
-    DateTime? setTglMulai = await showDatePicker(
+    DateTime? setTglBerakhir = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(2022),
         lastDate: DateTime(2030));
 
-    if (setTglMulai != null && setTglMulai != DateTime.now()) {
+    if (setTglBerakhir != null && setTglBerakhir != DateTime.now()) {
       setState(() {
-        endDate = DateFormat.yMMMd().format(setTglMulai).toString();
+        endDate = DateFormat.yMMMd().format(setTglBerakhir).toString();
       });
     }
   }
@@ -367,29 +367,37 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                 ),
                               ),
                               onTap: (){
-                                if(startDate=='atur tanggal mulai'
-                                    &&
-                                    endDate=='atur tanggal perkiraan berakhir'
-                                    &&
-                                    inputJumlah_controller.text.isEmpty){
-                                  Get.snackbar(
-                                      'Required',
-                                      'All fields required',
-                                      colorText: Colors.black,
-                                      backgroundColor: Colors.white,
-                                      snackPosition: SnackPosition.BOTTOM,
-                                      icon: Icon(Icons.warning, color: Colors.black,)
-                                  );
-                                } else{
-                                  afkeurController.addAfkeur(
-                                    afkeurModel: AfkeurModel(
-                                        startDate: startDate,
-                                        jumlahAyam: int.parse(inputJumlah_controller.text),
-                                        kondisi: valKondisi,
-                                        endDate: endDate),
-                                  );
+                                // if(startDate=='atur tanggal mulai'){
+                                //   Get.snackbar(
+                                //       'Required',
+                                //       'All fields required',
+                                //       colorText: Colors.black,
+                                //       backgroundColor: Colors.white,
+                                //       snackPosition: SnackPosition.BOTTOM,
+                                //       icon: Icon(Icons.warning, color: Colors.black,)
+                                //   );
+                                // } else if(endDate=='atur tanggal perkiraan berakhir'){
+                                //   Get.snackbar(
+                                //       'Required',
+                                //       'All fields required',
+                                //       colorText: Colors.black,
+                                //       backgroundColor: Colors.white,
+                                //       snackPosition: SnackPosition.BOTTOM,
+                                //       icon: Icon(Icons.warning, color: Colors.black,)
+                                //   );
+                                // } else if(inputJumlah_controller.text.isEmpty){
+                                //   Get.snackbar(
+                                //       'Required',
+                                //       'All fields required',
+                                //       colorText: Colors.black,
+                                //       backgroundColor: Colors.white,
+                                //       snackPosition: SnackPosition.BOTTOM,
+                                //       icon: Icon(Icons.warning, color: Colors.black,)
+                                //   );
+                                // } else{
+                                  add_toTable();
                                   Get.back();
-                                }
+                                // }
                               },
                             )
                           ],
@@ -409,9 +417,20 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
         ),
         backgroundColor: Color(0xff3C486B),
         onPressed: (){
-
+          Get.back();
         },
       ),
     );
+  }
+
+  add_toTable() async{
+    int val = await afkeurController.addAfkeur(
+      afkeurModel: AfkeurModel(
+          startDate: startDate,
+          jumlahAyam: int.parse(inputJumlah_controller.text),
+          kondisi: valKondisi,
+          endDate: endDate),
+    );
+    print('the id : $val');
   }
 }

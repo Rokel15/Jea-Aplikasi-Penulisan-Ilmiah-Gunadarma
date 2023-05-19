@@ -1,6 +1,8 @@
 import 'package:aplikasi_pi/ui/Afkeur/addData_Afkeur.dart';
 import 'package:aplikasi_pi/ui/Afkeur/handled%20by%20sqflite/AfkeurController.dart';
+import 'package:aplikasi_pi/ui/Afkeur/handled%20by%20sqflite/AfkeurModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,16 +15,6 @@ class Afkeur extends StatefulWidget {
 }
 
 class _Afkeur extends State<Afkeur> {
-
-  final AfkeurController afkeurController = Get.put(AfkeurController());
-
-  @override
-  void initState(){
-    super.initState();
-    afkeurController.getAfkeurData();
-  }
-
-
   Future<Null> Check_Afkeur(BuildContext context) async{
     var simpleDialog = SimpleDialog(
       title: Container(
@@ -115,6 +107,13 @@ class _Afkeur extends State<Afkeur> {
         builder: (BuildContext context){
           return simpleDialog;
         });
+  }
+  final AfkeurController afkeurController = Get.put(AfkeurController());
+
+  @override
+  void initState(){
+    super.initState();
+    afkeurController.getAfkeurData();
   }
 
   @override
@@ -226,7 +225,6 @@ class _Afkeur extends State<Afkeur> {
                     ),
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.only(left: 20),
                       child: GestureDetector(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -248,12 +246,32 @@ class _Afkeur extends State<Afkeur> {
                         ),
                         onTap: (){
                           Get.to(addData_Afkeur());
+                          afkeurController.getAfkeurData();
                         },
                       ),
                     ),
                   ],
                 ),
               ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 25),
+              child: Obx((){
+                return ListView.builder(
+                  itemCount: afkeurController.AfkeurList.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (_, index){
+                    AfkeurModel afkeurModel = afkeurController.AfkeurList[index];
+                    return Row(
+                      children: [
+                        Text('${afkeurModel.startDate}'),
+                        Text('${afkeurModel.endDate}'),
+                      ],
+                    );
+                  },
+                );
+              }),
             ),
           ],
         ),
