@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class See_Detail extends StatelessWidget {
 
@@ -38,6 +39,7 @@ class See_Detail extends StatelessWidget {
                 ),
                 child: detail(
                   Ask_data: data,
+                  documentSnapshot: documentSnapshot,
                 )
             ),
           ),
@@ -48,9 +50,11 @@ class See_Detail extends StatelessWidget {
 }
 
 class detail extends StatelessWidget {
+  DocumentSnapshot documentSnapshot;
   Map<String, dynamic> Ask_data;
   detail({
     required this.Ask_data,
+    required this.documentSnapshot
   });
 
   @override
@@ -258,12 +262,27 @@ class detail extends StatelessWidget {
               color: Colors.black
             ),
           ),
-          Text(
-            'Total Nilai\t: ${Ask_data['Total Nilai']}',
-            style: GoogleFonts.lato(
-                fontSize: 16,
-                fontWeight: FontWeight.w600
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Total Nilai\t: ${Ask_data['Total Nilai']}',
+                style: GoogleFonts.lato(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600
+                ),
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.delete_forever,
+                  size: 30,
+                ),
+                onPressed: (){
+                  documentSnapshot.reference.delete();
+                  Get.back();
+                },
+              )
+            ],
           ),
         ],
       ),

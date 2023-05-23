@@ -424,13 +424,14 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
   }
 
   add_toTable() async{
-    int val = await afkeurController.addAfkeur(
+    await afkeurController.addAfkeur(
       afkeurModel: AfkeurModel(
           startDate: startDate,
           jumlahAyam: int.parse(inputJumlah_controller.text),
           kondisi: valKondisi,
           endDate: endDate),
     );
-    print('the id : $val');
+    afkeurController.getAfkeurData();
+    // print('the id : $val');
   }
 }
