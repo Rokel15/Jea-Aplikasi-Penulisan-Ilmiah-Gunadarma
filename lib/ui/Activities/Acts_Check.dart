@@ -127,7 +127,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
             Container(
               width: double.infinity,
               padding: EdgeInsets.only(top: 14, left: 15, right: 15, bottom: 30),
-              color: Color(0xff3C486B),
+              color: Color(0xff3F497F),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -255,7 +255,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
             //body
             Container(
               width: double.infinity,
-              color: Color(0xff3C486B),
+              color: Color(0xff3F497F),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -360,7 +360,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Color(0xff3C486B),
+        backgroundColor: Color(0xff3F497F),
         onPressed: (){
           Get.to(listing_Acts(Activities: Activities));
         },
