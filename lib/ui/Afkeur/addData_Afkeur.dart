@@ -50,15 +50,15 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
 
   TextEditingController inputJumlah_controller = TextEditingController();
 
-  List<String> listKondisi = ['Produktif', 'tidak produktif'];
+  List<String> listKondisi = ['produktif', 'tidak produktif'];
   int valKondisi = 0;
-  String kondisiAwal = 'Produktif';
+  String kondisiAwal = 'produktif';
   void onChanged_kondisi(String? value){
     setState(() {
       kondisiAwal = value!;
-      if(kondisiAwal=='Produktif'){
+      if(kondisiAwal=='produktif'){
         valKondisi = 1;
-      } else{
+      } else if(kondisiAwal=='tidak produktif'){
         valKondisi = 0;
       }
     });
@@ -367,37 +367,40 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                 ),
                               ),
                               onTap: (){
-                                // if(startDate=='atur tanggal mulai'){
-                                //   Get.snackbar(
-                                //       'Required',
-                                //       'All fields required',
-                                //       colorText: Colors.black,
-                                //       backgroundColor: Colors.white,
-                                //       snackPosition: SnackPosition.BOTTOM,
-                                //       icon: Icon(Icons.warning, color: Colors.black,)
-                                //   );
-                                // } else if(endDate=='atur tanggal perkiraan berakhir'){
-                                //   Get.snackbar(
-                                //       'Required',
-                                //       'All fields required',
-                                //       colorText: Colors.black,
-                                //       backgroundColor: Colors.white,
-                                //       snackPosition: SnackPosition.BOTTOM,
-                                //       icon: Icon(Icons.warning, color: Colors.black,)
-                                //   );
-                                // } else if(inputJumlah_controller.text.isEmpty){
-                                //   Get.snackbar(
-                                //       'Required',
-                                //       'All fields required',
-                                //       colorText: Colors.black,
-                                //       backgroundColor: Colors.white,
-                                //       snackPosition: SnackPosition.BOTTOM,
-                                //       icon: Icon(Icons.warning, color: Colors.black,)
-                                //   );
-                                // } else{
+                                if(startDate=='atur tanggal mulai'){
+                                  Get.snackbar(
+                                      'Required',
+                                      'All fields required',
+                                      colorText: Colors.black,
+                                      backgroundColor: Colors.white,
+                                      snackPosition: SnackPosition.BOTTOM,
+                                      icon: Icon(Icons.warning, color: Colors.black,)
+                                  );
+                                }
+                                else if(endDate=='atur tanggal perkiraan berakhir'){
+                                  Get.snackbar(
+                                      'Required',
+                                      'All fields required',
+                                      colorText: Colors.black,
+                                      backgroundColor: Colors.white,
+                                      snackPosition: SnackPosition.BOTTOM,
+                                      icon: Icon(Icons.warning, color: Colors.black,)
+                                  );
+                                }
+                                else if(inputJumlah_controller.text.isEmpty){
+                                  Get.snackbar(
+                                      'Required',
+                                      'All fields required',
+                                      colorText: Colors.black,
+                                      backgroundColor: Colors.white,
+                                      snackPosition: SnackPosition.BOTTOM,
+                                      icon: Icon(Icons.warning, color: Colors.black,)
+                                  );
+                                }
+                                else{
                                   add_toTable();
                                   Get.back();
-                                // }
+                                }
                               },
                             )
                           ],
@@ -432,6 +435,5 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
           endDate: endDate),
     );
     afkeurController.getAfkeurData();
-    // print('the id : $val');
   }
 }

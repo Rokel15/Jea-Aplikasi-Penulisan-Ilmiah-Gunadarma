@@ -131,7 +131,7 @@ class _Afkeur extends State<Afkeur> {
             Container(
               width: double.infinity,
               padding: EdgeInsets.only(top: 14, left: 15, right: 15, bottom: 30),
-              color: Color(0xff3C486B),
+              color: Color(0xff3F497F),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -173,7 +173,7 @@ class _Afkeur extends State<Afkeur> {
             //body
             Container(
               width: double.infinity,
-              color: Color(0xff3C486B),
+              color: Color(0xff3F497F),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -246,7 +246,6 @@ class _Afkeur extends State<Afkeur> {
                         ),
                         onTap: (){
                           Get.to(addData_Afkeur());
-                          afkeurController.getAfkeurData();
                         },
                       ),
                     ),
@@ -255,7 +254,9 @@ class _Afkeur extends State<Afkeur> {
               ),
             ),
             Container(
+              width: double.infinity,
               margin: EdgeInsets.only(top: 25),
+              padding: EdgeInsets.only(left: 20, right: 20),
               child: Obx((){
                 return ListView.builder(
                   itemCount: afkeurController.AfkeurList.length,
@@ -263,11 +264,78 @@ class _Afkeur extends State<Afkeur> {
                   shrinkWrap: true,
                   itemBuilder: (_, index){
                     AfkeurModel afkeurModel = afkeurController.AfkeurList[index];
-                    return Row(
-                      children: [
-                        Text('${afkeurModel.startDate}'),
-                        Text('${afkeurModel.endDate}'),
-                      ],
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      child: SlideAnimation(
+                        child: FadeInAnimation(
+                          child: Container(
+                            width: double.infinity,
+                            margin: EdgeInsets.only(bottom: 18),
+                            padding: EdgeInsets.only(top: 13, left: 15, right: 15, bottom: 13),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Color(0xff3F497F)
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '${afkeurModel.startDate}  -  ${afkeurModel.endDate}',
+                                      style: GoogleFonts.lato(
+                                        textStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white
+                                        )
+                                      ),
+                                    ),
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.delete_forever,
+                                        color: Colors.white,),
+                                      onPressed: (){
+                                        afkeurController.delete(afkeurModel);
+                                        afkeurController.getAfkeurData();
+                                      },
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 5),
+                                Container(
+                                  width: double.infinity,
+                                  height: 2.5,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Jumlah : ${afkeurModel.jumlahAyam} ekor',
+                                  style: GoogleFonts.lato(
+                                      textStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white
+                                      )
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Kondisi : ${afkeurModel.kondisi}',
+                                  style: GoogleFonts.lato(
+                                      textStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white
+                                      )
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     );
                   },
                 );

@@ -110,7 +110,7 @@ class _Articles extends State<Articles> {
             Container(
               width: double.infinity,
               padding: EdgeInsets.only(top: 14, left: 15, right: 15, bottom: 30),
-              color: Color(0xff3C486B),
+              color: Color(0xff3F497F),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -152,7 +152,7 @@ class _Articles extends State<Articles> {
             //body
             Container(
               width: double.infinity,
-              color: Color(0xff3C486B),
+              color: Color(0xff3F497F),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(

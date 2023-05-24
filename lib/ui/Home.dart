@@ -101,14 +101,14 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Chicken Care'),
-        backgroundColor: Color(0xff3C486B),
+        backgroundColor: Color(0xff3F497F),
       ),
       body: ListView(
         children: [
           //features
           Container(
             width: double.infinity,
-            color: Color(0xff3C486B),
+            color: Color(0xff3F497F),
             padding: EdgeInsets.only(top: 45, bottom: 45),
             child: Column(
               children: [
