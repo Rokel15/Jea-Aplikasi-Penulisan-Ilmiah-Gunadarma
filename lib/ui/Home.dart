@@ -342,7 +342,7 @@ class _HomeState extends State<Home> {
                           '> Memberikan pengawasan terhadap kegiatan karyawan secara berkala untuk menilai kondusifitas suasana kerja.',
                           style: GoogleFonts.lato(
                             textStyle: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               color: Colors.white,
                             )
                           ),
@@ -355,7 +355,7 @@ class _HomeState extends State<Home> {
                           '> Produktivitas menurun akibat suasana kerja yang tidak kondusif, tidak kondusif juga disebabakan kurangnya pengawasan.',
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.white,
                               )
                           ),
@@ -416,7 +416,7 @@ class _HomeState extends State<Home> {
                           '> Pelepasan ayam untuk diambil dagingnya ketika ayam sudah tidak bagus masa produktivitasnya dalam menghasilkan telur ataupun karena harga telur di pasar yang rusak.',
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.white,
                               )
                           ),
@@ -478,7 +478,7 @@ class _HomeState extends State<Home> {
                           '> Berisi kumpulan artikel seputar peternakan ayam.',
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.white,
                               )
                           ),

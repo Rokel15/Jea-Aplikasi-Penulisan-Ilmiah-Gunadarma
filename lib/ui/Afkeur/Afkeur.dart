@@ -183,7 +183,7 @@ class _Afkeur extends State<Afkeur> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 25),
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -321,15 +321,30 @@ class _Afkeur extends State<Afkeur> {
                                   ),
                                 ),
                                 SizedBox(height: 5),
-                                Text(
-                                  'Kondisi : ${afkeurModel.kondisi}',
-                                  style: GoogleFonts.lato(
-                                      textStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white
-                                      )
-                                  ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Kondisi : ',
+                                      style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white
+                                          )
+                                      ),
+                                    ),
+                                    Text(
+                                      afkeurModel.kondisi==1?
+                                      'produktif':'tidak produktif',
+                                      style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white
+                                          )
+                                      ),
+                                    ),
+                                  ],
                                 )
                               ],
                             ),

@@ -50,15 +50,15 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
 
   TextEditingController inputJumlah_controller = TextEditingController();
 
-  List<String> listKondisi = ['produktif', 'tidak produktif'];
+  List<String> listKondisi = ['pilih kondisi','produktif', 'tidak produktif'];
   int valKondisi = 0;
-  String kondisiAwal = 'produktif';
+  String kondisiAwal = 'pilih kondisi';
   void onChanged_kondisi(String? value){
     setState(() {
       kondisiAwal = value!;
       if(kondisiAwal=='produktif'){
         valKondisi = 1;
-      } else if(kondisiAwal=='tidak produktif'){
+      } else{
         valKondisi = 0;
       }
     });
