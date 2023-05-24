@@ -240,7 +240,7 @@ class _HomeState extends State<Home> {
           //Home
           Container(
             width: double.infinity,
-            color: Color(0xff3C486B),
+            color: Color(0xff3F497F),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -491,7 +491,7 @@ class _HomeState extends State<Home> {
                   Container(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height /15,
-                    color: Color(0xff3C486B),
+                    color: Color(0xff3F497F),
                     child: Center(
                       child: Text(
                         'version 1.0',
