@@ -444,8 +444,7 @@ class _listing_ActsState extends State<listing_Acts> {
                                       height: MediaQuery.of(context).size.width / 15,
                                       width: 40,
                                       decoration: BoxDecoration(
-                                        // color: Colors.pink[600],
-                                        color: index==0?Colors.deepPurple:Colors.pink[600],
+                                        color: index==0?Colors.pink[600]:Colors.deepPurple,
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: pilihKategori==index?

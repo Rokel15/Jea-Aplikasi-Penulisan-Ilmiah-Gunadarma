@@ -488,21 +488,14 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height /15,
-                    color: Color(0xff3F497F),
-                    child: Center(
-                      child: Text(
-                        'version 1.0',
-                        style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white
-                          )
-                        ),
-                      ),
+                  Text(
+                    'version 1.0',
+                    style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black
+                      )
                     ),
                   )
                 ],

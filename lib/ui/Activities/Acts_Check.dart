@@ -201,7 +201,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                     height: MediaQuery.of(context).size.width / 12,
                                     width: 60,
                                     decoration: BoxDecoration(
-                                      color: Colors.deepPurple,
+                                      color: Colors.pink[600],
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
@@ -225,7 +225,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                                     height: MediaQuery.of(context).size.width / 12,
                                     width: 60,
                                     decoration: BoxDecoration(
-                                      color: Colors.pink[600],
+                                      color: Colors.deepPurple,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
@@ -392,7 +392,7 @@ class dataReader extends StatelessWidget{
       margin: EdgeInsets.only(top: 10, left: 15, right: 15,),
       padding: EdgeInsets.only(top: 10, left: 10, right: 5, bottom: 10),
       decoration: BoxDecoration(
-        color: kategori==0?Colors.deepPurple:Colors.pink[600],
+        color: kategori==0?Colors.pink[600]:Colors.deepPurple,
         borderRadius: BorderRadius.circular(15)
       ),
       child: Row(
