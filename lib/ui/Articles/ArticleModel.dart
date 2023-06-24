@@ -1,8 +1,6 @@
 class ArticleModel{
-
   String namaArticle;
   String pdfUrl;
-
 
   ArticleModel({
     required this.namaArticle,
@@ -12,31 +10,31 @@ class ArticleModel{
 
 List<ArticleModel> listArticle = [
   ArticleModel(
-    namaArticle: "CCNA class.pdf",
-    pdfUrl: 'assets/CCNA class.pdf',
+    namaArticle: "Mengenal Peternakan Ayam dan Cara Mengelola Bisnisnya!.pdf",
+    pdfUrl: 'assets/01 Mengenal Peternakan Ayam dan Cara Mengelola Bisnisnya!.pdf',
   ),
   ArticleModel(
-    namaArticle: 'CCNA Lab Guide Nixtrain_1st Edition_Full Version.pdf',
-    pdfUrl: 'assets/CCNA Lab Guide Nixtrain_1st Edition_Full Version.pdf',
+    namaArticle: 'Rahasia Sukses Bisnis Ternak Ayam Kampung.pdf',
+    pdfUrl: 'assets/02 Rahasia Sukses Bisnis Ternak Ayam Kampung.pdf',
   ),
   ArticleModel(
-    namaArticle: 'CCNA MQ IT ACAADEMY 17 agustus.pdf',
-    pdfUrl: 'assets/CCNA MQ IT ACAADEMY 17 agustus.pdf',
+    namaArticle: 'MANFAAT TELUR BAGI TUBUH KITA.pdf',
+    pdfUrl: 'assets/03 MANFAAT TELUR BAGI TUBUH KITA.pdf',
   ),
   ArticleModel(
-    namaArticle: 'ccna-ibrahim-smktarunabhaktidepok.pdf',
-    pdfUrl: 'assets/ccna-ibrahim-smktarunabhaktidepok.pdf',
+    namaArticle: 'Cara Memilih Telur Ayam dengan Ciri yang Baik dan Normal.pdf',
+    pdfUrl: 'assets/04 Cara Memilih Telur Ayam dengan Ciri yang Baik dan Normal.pdf',
   ),
   ArticleModel(
-    namaArticle: 'ccna-taufik-smk7semarang.pdf',
-    pdfUrl: 'assets/ccna-taufik-smk7semarang.pdf',
+    namaArticle: '5 Manfaat Daging Ayam, Salah Satunya untuk Kesehatan Jantung.pdf',
+    pdfUrl: 'assets/05 5 Manfaat Daging Ayam, Salah Satunya untuk Kesehatan Jantung.pdf',
   ),
   ArticleModel(
-    namaArticle: 'ccnp (1).pdf',
-    pdfUrl: 'assets/ccnp (1).pdf',
+    namaArticle: 'Kandungan Gizi dan Manfaat daging ayam bagi kesehatan.pdf',
+    pdfUrl: 'assets/06 Kandungan Gizi dan Manfaat daging ayam bagi kesehatan.pdf',
   ),
   ArticleModel(
-    namaArticle: 'CCNP EIGRP.pdf',
-    pdfUrl: 'assets/CCNP EIGRP.pdf',
+    namaArticle: '7 Cara Memilih Daging Ayam Segar, Jangan Sampai Keliru!.pdf',
+    pdfUrl: 'assets/07 7 Cara Memilih Daging Ayam Segar, Jangan Sampai Keliru!.pdf',
   )
 ];

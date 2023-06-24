@@ -259,13 +259,13 @@ class buildArticle extends StatelessWidget{
   double getMinHeight(int index){
     switch(index % 4){
       case 0:
-        return 60;
+        return 100;
       case 1:
-        return 100;
+        return 130;
       case 2:
-        return 100;
+        return 130;
       case 3:
-        return 60;
+        return 100;
       default:
         return 80;
     }
