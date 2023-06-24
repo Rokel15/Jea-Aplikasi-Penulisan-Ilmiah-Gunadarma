@@ -483,14 +483,18 @@ class _Afkeur extends State<Afkeur> {
                       text: 'produktif',
                       color: Color(0xff293462),
                       onTap: (){
-
+                        afkeurController.kondisi1(afkeurModel.id!);
+                        afkeurController.getAfkeurData();
+                        Get.back();
                       }
                   ),
                   Update_and_Delete_button(
                       text: 'tidak produktif',
                       color: Color(0xffFF4A4A),
                       onTap: (){
-
+                        afkeurController.kondisi0(afkeurModel.id!);
+                        afkeurController.getAfkeurData();
+                        Get.back();
                       }
                   )
                 ],

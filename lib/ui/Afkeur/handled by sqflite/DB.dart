@@ -48,16 +48,16 @@ class DB{
   //update Kondisi 0
   static updateKondisi0(int id) async{
     return await database!.rawUpdate(
-      '''UPDATE $tableName SET kondisi = ? WHERE id = ?''',
-      [0, id]
+      '''UPDATE $tableName SET kondisi = 0 WHERE id = ?''',
+      [id]
     );
   }
 
   //update Kondisi 1
   static updateKondisi1(int id) async{
     return await database!.rawUpdate(
-        '''UPDATE $tableName SET kondisi = ? WHERE id = ?''',
-        [1, id]
+        '''UPDATE $tableName SET kondisi = 1 WHERE id = ?''',
+        [id]
     );
   }
 }
