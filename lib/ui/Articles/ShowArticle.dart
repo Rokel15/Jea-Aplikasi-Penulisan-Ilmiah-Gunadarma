@@ -19,6 +19,5 @@ class ShowArticle extends StatelessWidget {
           articleModel.pdfUrl
       ),
     );
-
   }
 }
