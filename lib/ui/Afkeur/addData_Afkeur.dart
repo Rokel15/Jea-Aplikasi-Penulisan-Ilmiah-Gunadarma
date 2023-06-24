@@ -397,6 +397,16 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                       icon: Icon(Icons.warning, color: Colors.black,)
                                   );
                                 }
+                                else if(kondisiAwal=='pilih kondisi'){ //2
+                                  Get.snackbar(
+                                      'Required',
+                                      'All fields required',
+                                      colorText: Colors.black,
+                                      backgroundColor: Colors.white,
+                                      snackPosition: SnackPosition.BOTTOM,
+                                      icon: Icon(Icons.warning, color: Colors.black,)
+                                  );
+                                }
                                 else{
                                   add_toTable();
                                   Get.back();

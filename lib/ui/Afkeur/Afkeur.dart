@@ -4,7 +4,6 @@ import 'package:aplikasi_pi/ui/Afkeur/handled%20by%20sqflite/AfkeurModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Afkeur extends StatefulWidget {
@@ -297,8 +296,7 @@ class _Afkeur extends State<Afkeur> {
                                         Icons.delete_forever,
                                         color: Colors.white,),
                                       onPressed: (){
-                                        afkeurController.delete(afkeurModel);
-                                        afkeurController.getAfkeurData();
+                                        showBottomSheet(context, afkeurController.AfkeurList[index]);
                                       },
                                     )
                                   ],
@@ -359,6 +357,98 @@ class _Afkeur extends State<Afkeur> {
           ],
         ),
       )
+    );
+  }
+
+  showBottomSheet(BuildContext context, AfkeurModel afkeurModel){
+    Get.bottomSheet(
+      Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height/5.7,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20)
+          ),
+          color: Colors.white,
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 7,
+              width: MediaQuery.of(context).size.width/2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.black
+              ),
+            ),
+            Spacer(),
+            Container(
+              // width: double.infinity,
+              padding: EdgeInsets.only(top: 20, bottom: 20),
+              child: Text(
+                'Apakah anda ingin mengapus?',
+                style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600
+                  )
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  DeleteOrNo_button(
+                      text: 'Yes',
+                      color: Color(0xff293462),
+                      onTap: () {
+                        afkeurController.delete(afkeurModel);
+                        afkeurController.getAfkeurData();
+                        Get.back();
+                      }
+                  ),
+                  DeleteOrNo_button(
+                      text: 'No',
+                      color: Color(0xffFF4A4A),
+                      onTap: (){
+                        Get.back();
+                      }
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  DeleteOrNo_button({required String text, required Color color,required Function() onTap}){
+    return GestureDetector(
+      child: Container(
+        width: MediaQuery.of(context).size.width/2.8,
+        height: MediaQuery.of(context).size.height/17,
+        decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(13),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.white
+              )
+            ),
+          ),
+        ),
+      ),
+      onTap: onTap,
     );
   }
 }

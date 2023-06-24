@@ -34,7 +34,10 @@ class DB{
 
   //retrieve
   static Future<List<Map<String, dynamic>>> query() async{
-    return await database!.query(tableName);
+    return await database!.query(
+      tableName,
+      orderBy: 'endDate ASC'
+    );
   }
 
   //delete
