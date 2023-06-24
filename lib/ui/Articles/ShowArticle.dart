@@ -11,8 +11,14 @@ class ShowArticle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SfPdfViewer.asset(
-      articleModel.pdfUrl
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('${articleModel.namaArticle}'),
+      ),
+      body: SfPdfViewer.asset(
+          articleModel.pdfUrl
+      ),
     );
+
   }
 }
