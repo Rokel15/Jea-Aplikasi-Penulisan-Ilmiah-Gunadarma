@@ -215,7 +215,7 @@ class _Articles extends State<Articles> {
                         itemBuilder: (context, index){
                           final article = listArticle[index];
                           return InkWell(
-                            child: buildArticle(articleModel: article, index: index),
+                            child: buildArticle(articleModel: article, index: index, namaArticle: article.namaArticle),
                             onTap: (){
                               Get.to(ShowArticle(articleModel: article));
                             },
@@ -237,10 +237,12 @@ class _Articles extends State<Articles> {
 class buildArticle extends StatelessWidget{
   ArticleModel articleModel;
   int index;
+  String namaArticle;
 
   buildArticle({
     required this.articleModel,
     required this.index,
+    required this.namaArticle,
   });
 
   Color? getColor(int index){
@@ -279,7 +281,27 @@ class buildArticle extends StatelessWidget{
         constraints: BoxConstraints(
           minHeight: getMinHeight(index)
         ),
-        child: Center(),
+        child: Container(
+          padding: EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('${namaArticle}',
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    )
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Icon(
+                    Icons.chevron_right,
+                  ),
+                )
+              ],
+            )),
       ),
     );
   }
