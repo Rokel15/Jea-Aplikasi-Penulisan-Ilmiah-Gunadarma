@@ -322,7 +322,7 @@ class _Afkeur extends State<Afkeur> {
                                 Row(
                                   children: [
                                     Text(
-                                      'Mortalitas minggu 100 : ''\nnot dispayed',
+                                      'Mortalitas minggu 100 : ''\nnot displayed',
                                       style: GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,
@@ -337,7 +337,7 @@ class _Afkeur extends State<Afkeur> {
                                 Row(
                                   children: [
                                     Text(
-                                      'Jumlah ayam tersisa : ''\nnot dispayed',
+                                      'Jumlah ayam tersisa : ''\nnot displayed',
                                       style: GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,

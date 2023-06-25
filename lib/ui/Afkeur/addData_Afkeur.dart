@@ -50,20 +50,6 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
 
   TextEditingController inputJumlah_controller = TextEditingController();
 
-  List<String> listKondisi = ['pilih kondisi','produktif', 'tidak produktif'];
-  int valStatus = 0;
-  String statusAwal = 'pilih kondisi';
-  void onChanged_status(String? value){
-    setState(() {
-      statusAwal = value!;
-      if(statusAwal=='produktif'){
-        valStatus = 1;
-      } else{
-        valStatus = 0;
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -305,53 +291,16 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 5, bottom: 13),
+                    padding: EdgeInsets.only(top: 10, bottom: 3),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Kondisi :',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600
-                            )
-                          ),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              child: Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(13),
-                                    border: Border.all(
-                                        width: 2,
-                                        color: Colors.black
-                                    )
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: DropdownButton(
-                                        value: statusAwal,
-                                        items: listKondisi.map((String e)
-                                        => DropdownMenuItem(
-                                            value: e,
-                                            child: Text(e)
-                                        )).toList(),
-                                        onChanged: (String? value){
-                                          onChanged_status(value);
-                                        },
-                                      ),
-                                ),
-                              ),
-                            ),
+                            Container(),
                             InkWell(
                               child: Container(
-                                margin: EdgeInsets.only(left: 8),
                                 padding: EdgeInsets.only(top: 13, left: 20, right: 20, bottom: 13),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
@@ -397,16 +346,6 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                       icon: Icon(Icons.warning, color: Colors.black,)
                                   );
                                 }
-                                else if(statusAwal=='pilih kondisi'){ //2
-                                  Get.snackbar(
-                                      'Required',
-                                      'All fields required',
-                                      colorText: Colors.black,
-                                      backgroundColor: Colors.white,
-                                      snackPosition: SnackPosition.BOTTOM,
-                                      icon: Icon(Icons.warning, color: Colors.black,)
-                                  );
-                                }
                                 else{
                                   add_toTable();
                                   Get.back();
@@ -441,7 +380,7 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
       afkeurModel: AfkeurModel(
           startDate: startDate,
           jumlahAyam: int.parse(inputJumlah_controller.text),
-          status: valStatus,
+          status: 3,
           endDate: endDate),
     );
     afkeurController.getAfkeurData();
