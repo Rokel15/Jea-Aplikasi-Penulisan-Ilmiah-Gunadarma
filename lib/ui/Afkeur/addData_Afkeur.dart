@@ -51,15 +51,15 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
   TextEditingController inputJumlah_controller = TextEditingController();
 
   List<String> listKondisi = ['pilih kondisi','produktif', 'tidak produktif'];
-  int valKondisi = 0;
-  String kondisiAwal = 'pilih kondisi';
-  void onChanged_kondisi(String? value){
+  int valStatus = 0;
+  String statusAwal = 'pilih kondisi';
+  void onChanged_status(String? value){
     setState(() {
-      kondisiAwal = value!;
-      if(kondisiAwal=='produktif'){
-        valKondisi = 1;
+      statusAwal = value!;
+      if(statusAwal=='produktif'){
+        valStatus = 1;
       } else{
-        valKondisi = 0;
+        valStatus = 0;
       }
     });
   }
@@ -336,14 +336,14 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 10),
                                   child: DropdownButton(
-                                        value: kondisiAwal,
+                                        value: statusAwal,
                                         items: listKondisi.map((String e)
                                         => DropdownMenuItem(
                                             value: e,
                                             child: Text(e)
                                         )).toList(),
                                         onChanged: (String? value){
-                                          onChanged_kondisi(value);
+                                          onChanged_status(value);
                                         },
                                       ),
                                 ),
@@ -397,7 +397,7 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
                                       icon: Icon(Icons.warning, color: Colors.black,)
                                   );
                                 }
-                                else if(kondisiAwal=='pilih kondisi'){ //2
+                                else if(statusAwal=='pilih kondisi'){ //2
                                   Get.snackbar(
                                       'Required',
                                       'All fields required',
@@ -441,7 +441,7 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
       afkeurModel: AfkeurModel(
           startDate: startDate,
           jumlahAyam: int.parse(inputJumlah_controller.text),
-          kondisi: valKondisi,
+          status: valStatus,
           endDate: endDate),
     );
     afkeurController.getAfkeurData();

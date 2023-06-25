@@ -137,7 +137,7 @@ class _Afkeur extends State<Afkeur> {
                   Column(
                       children: [
                         Text(
-                          'Afkeur',
+                          'Deplesi',
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
                                 fontSize: 18,
@@ -190,7 +190,7 @@ class _Afkeur extends State<Afkeur> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                  'Afkeur List!',
+                                  'Deplesi List!',
                                   style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                         fontSize: 20,
@@ -307,9 +307,9 @@ class _Afkeur extends State<Afkeur> {
                                   height: 2.5,
                                   color: Colors.white,
                                 ),
-                                SizedBox(height: 5),
+                                SizedBox(height: 13),
                                 Text(
-                                  'Jumlah : ${afkeurModel.jumlahAyam} ekor',
+                                  'Jumlah Ayam :''\n${afkeurModel.jumlahAyam} ekor',
                                   style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                           fontSize: 16,
@@ -318,11 +318,41 @@ class _Afkeur extends State<Afkeur> {
                                       )
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                                SizedBox(height: 13),
                                 Row(
                                   children: [
                                     Text(
-                                      'Kondisi : ',
+                                      'Mortalitas minggu 100 : ''\nnot dispayed',
+                                      style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white
+                                          )
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 13),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Jumlah ayam tersisa : ''\nnot dispayed',
+                                      style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white
+                                          )
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 13),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Status : ',
                                       style: GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,
@@ -333,8 +363,13 @@ class _Afkeur extends State<Afkeur> {
                                     ),
                                     Expanded(
                                       child: Text(
-                                        afkeurModel.kondisi==1?
-                                        'produktif':'tidak produktif',
+                                        afkeurModel.status==3?
+                                        'Not Set'
+                                            :
+                                        afkeurModel.status==1?
+                                        'Baik'
+                                            :
+                                        'Buruk',
                                         style: GoogleFonts.lato(
                                             textStyle: TextStyle(
                                                 fontSize: 16,
@@ -344,6 +379,20 @@ class _Afkeur extends State<Afkeur> {
                                         ),
                                       ),
                                     ),
+                                    GestureDetector(
+                                      child: Icon(
+                                        Icons.restart_alt,
+                                        size: 22,
+                                        color: Colors.white,
+                                      ),
+                                      onTap: (){
+                                        setState(() {
+                                          afkeurController.status3(afkeurModel.id!);
+                                          afkeurController.getAfkeurData();
+                                        });
+                                      },
+                                    ),
+                                    SizedBox(width: 10,),
                                     GestureDetector(
                                       child: Icon(
                                         Icons.edit_document,
@@ -465,7 +514,7 @@ class _Afkeur extends State<Afkeur> {
               // width: double.infinity,
               padding: EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
-                'Update Kondisi',
+                'Status',
                 style: GoogleFonts.lato(
                     textStyle: TextStyle(
                         fontSize: 16,
@@ -480,19 +529,19 @@ class _Afkeur extends State<Afkeur> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Update_and_Delete_button(
-                      text: 'produktif',
+                      text: 'Baik',
                       color: Color(0xff293462),
                       onTap: (){
-                        afkeurController.kondisi1(afkeurModel.id!);
+                        afkeurController.status1(afkeurModel.id!);
                         afkeurController.getAfkeurData();
                         Get.back();
                       }
                   ),
                   Update_and_Delete_button(
-                      text: 'non produktif',
+                      text: 'Buruk',
                       color: Color(0xffFF4A4A),
                       onTap: (){
-                        afkeurController.kondisi0(afkeurModel.id!);
+                        afkeurController.status0(afkeurModel.id!);
                         afkeurController.getAfkeurData();
                         Get.back();
                       }

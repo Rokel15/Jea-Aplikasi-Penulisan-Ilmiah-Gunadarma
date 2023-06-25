@@ -177,7 +177,7 @@ class _HomeState extends State<Home> {
                             height: 20,
                           ),
                           Text(
-                            'Afkeur',
+                            'Deplesi',
                             style: GoogleFonts.lato(
                                 textStyle: TextStyle(
                                   fontSize: 18,
@@ -193,7 +193,7 @@ class _HomeState extends State<Home> {
                       },
                     ),
 
-                    //article
+                    //articles
                     GestureDetector(
                       child: Column(
                         children: [

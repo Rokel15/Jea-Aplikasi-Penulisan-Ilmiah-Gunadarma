@@ -29,12 +29,16 @@ class AfkeurController extends GetxController{
   }
 
   //update kondisi menjadi 0
-  void kondisi0(int id) async{
-    await DB.updateKondisi0(id);
+  void status0(int id) async{
+    await DB.updateStatus0(id);
   }
 
   //update kondisi menjadi 1
-  void kondisi1(int id) async{
-    await DB.updateKondisi1(id);
+  void status1(int id) async{
+    await DB.updateStatus1(id);
+  }
+
+  void status3(int id) async{
+    await DB.updateStatus3(id);
   }
 }

@@ -19,7 +19,7 @@ class DB{
             '''CREATE TABLE $tableName(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             startDate STRING, jumlahAyam INTEGER,
-            kondisi INTEGER, endDate STRING)''';
+            status INTEGER, endDate STRING)''';
             return db.execute(sql);
           });
     } catch(e){
@@ -45,18 +45,26 @@ class DB{
     return await database!.delete(tableName, where: 'id=?', whereArgs: [afkeurModel.id]);
   }
 
-  //update Kondisi 0
-  static updateKondisi0(int id) async{
+  //update status 0
+  static updateStatus0(int id) async{
     return await database!.rawUpdate(
-      '''UPDATE $tableName SET kondisi = 0 WHERE id = ?''',
-      [id]
+        '''UPDATE $tableName SET status = 0 WHERE id = ?''',
+        [id]
     );
   }
 
-  //update Kondisi 1
-  static updateKondisi1(int id) async{
+  //update status 1
+  static updateStatus1(int id) async{
     return await database!.rawUpdate(
-        '''UPDATE $tableName SET kondisi = 1 WHERE id = ?''',
+        '''UPDATE $tableName SET status = 1 WHERE id = ?''',
+        [id]
+    );
+  }
+
+  //update status 3
+  static updateStatus3(int id) async{
+    return await database!.rawUpdate(
+        '''UPDATE $tableName SET status = 3 WHERE id = ?''',
         [id]
     );
   }
