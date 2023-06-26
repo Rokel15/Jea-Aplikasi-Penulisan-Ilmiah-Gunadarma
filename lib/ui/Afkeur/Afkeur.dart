@@ -2,6 +2,7 @@ import 'package:aplikasi_pi/ui/Afkeur/addData_Afkeur.dart';
 import 'package:aplikasi_pi/ui/Afkeur/handled%20by%20sqflite/AfkeurController.dart';
 import 'package:aplikasi_pi/ui/Afkeur/handled%20by%20sqflite/AfkeurModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -107,6 +108,123 @@ class _Afkeur extends State<Afkeur> {
           return simpleDialog;
         });
   }
+
+
+  Future<Null> input_Mortalitas(BuildContext context, AfkeurModel afkeurModel) async{
+    var simpleDialog = SimpleDialog(
+      title: Container(
+        width: double.infinity,
+        padding: EdgeInsets.only(top: 8, left: 5, right: 5, bottom: 8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.black,
+        ),
+        child: Center(
+          child: Text(
+            'Input total Mortalitas minggu 100',
+            style: GoogleFonts.lato(
+                textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                )
+            ),
+          ),
+        ),
+      ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(
+            width: 2,
+            color: Color(0xff3F497F)
+          )
+      ),
+      children: <Widget>[
+        Material(
+          color: Colors.white,
+          child: Column(
+            children: [
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.only(left: 13, right: 13),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))],
+                  decoration: InputDecoration(
+                    labelText: 'total mortalitas',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                    )
+                  ),
+                ),
+              ),
+              SizedBox(height: 25,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 4),
+                      padding: EdgeInsets.only(top: 10, left: 20, right: 20 ,bottom: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Color(0xff293462),
+                      ),
+                      child: Text(
+                          'Ok',
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white
+                              )
+                          )
+                      ),
+                    ),
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                  SizedBox(width: 17,),
+                  GestureDetector(
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 4),
+                      padding: EdgeInsets.only(top: 10, left: 20, right: 20 ,bottom: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Color(0xffFF4A4A),
+                      ),
+                      child: Text(
+                          'Cancel',
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white
+                              )
+                          )
+                      ),
+                    ),
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                  SizedBox(width: 15,)
+                ],
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return simpleDialog;
+        });
+  }
+
   final AfkeurController afkeurController = Get.put(AfkeurController());
 
   @override
@@ -303,7 +421,7 @@ class _Afkeur extends State<Afkeur> {
                                 ),
                                 SizedBox(height: 5),
                                 Text(
-                                  'Jumlah Ayam :''\n${afkeurModel.jumlahAyam} ekor',
+                                  'Jumlah Ayam :''\n${afkeurModel.jumlahAyam} ekor (100%)',
                                   style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                           fontSize: 16,
@@ -352,7 +470,7 @@ class _Afkeur extends State<Afkeur> {
                                             color: Colors.white,
                                           ),
                                           onTap: (){
-                                            show_UpdateBottomSheet(context, afkeurModel);
+                                            input_Mortalitas(context, afkeurModel);
                                           },
                                         )
                                       ],
