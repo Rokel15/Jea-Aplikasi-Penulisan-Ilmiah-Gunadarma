@@ -302,12 +302,6 @@ class _Afkeur extends State<Afkeur> {
                                   ],
                                 ),
                                 SizedBox(height: 5),
-                                Container(
-                                  width: double.infinity,
-                                  height: 2.5,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(height: 13),
                                 Text(
                                   'Jumlah Ayam :''\n${afkeurModel.jumlahAyam} ekor',
                                   style: GoogleFonts.lato(
@@ -319,10 +313,17 @@ class _Afkeur extends State<Afkeur> {
                                   ),
                                 ),
                                 SizedBox(height: 13),
-                                Row(
+                                Container(
+                                  width: double.infinity,
+                                  height: 2.5,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 13),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Mortalitas minggu 100 : ''\nnot displayed',
+                                      'Mortalitas minggu 100 : ',
                                       style: GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,
@@ -330,14 +331,40 @@ class _Afkeur extends State<Afkeur> {
                                               color: Colors.white
                                           )
                                       ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'not displayed',
+                                          style: GoogleFonts.lato(
+                                              textStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white
+                                              )
+                                          ),
+                                        ),
+                                        GestureDetector(
+                                          child: Icon(
+                                            Icons.edit_document,
+                                            size: 22,
+                                            color: Colors.white,
+                                          ),
+                                          onTap: (){
+                                            show_UpdateBottomSheet(context, afkeurModel);
+                                          },
+                                        )
+                                      ],
                                     )
                                   ],
                                 ),
                                 SizedBox(height: 13),
-                                Row(
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Jumlah ayam tersisa : ''\nnot displayed',
+                                      'Jumlah ayam tersisa : ',
                                       style: GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,
@@ -345,8 +372,29 @@ class _Afkeur extends State<Afkeur> {
                                               color: Colors.white
                                           )
                                       ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'not displayed',
+                                          style: GoogleFonts.lato(
+                                              textStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white
+                                              )
+                                          ),
+                                        ),
+                                      ],
                                     )
                                   ],
+                                ),
+                                SizedBox(height: 13),
+                                Container(
+                                  width: double.infinity,
+                                  height: 2.5,
+                                  color: Colors.white,
                                 ),
                                 SizedBox(height: 13),
                                 Row(
