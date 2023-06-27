@@ -381,7 +381,9 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
           startDate: startDate,
           jumlahAyam: int.parse(inputJumlah_controller.text),
           status: 3,
-          endDate: endDate),
+          endDate: endDate,
+          mortalitas: 0
+      ),
     );
     afkeurController.getAfkeurData();
   }

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:aplikasi_pi/ui/Afkeur/handled by sqflite/DB.dart';
 
 class Afkeur extends StatefulWidget {
   const Afkeur({Key? key}) : super(key: key);
@@ -109,7 +110,7 @@ class _Afkeur extends State<Afkeur> {
         });
   }
 
-
+  int? inputMortalitas;
   Future<Null> input_Mortalitas(BuildContext context, AfkeurModel afkeurModel) async{
     var simpleDialog = SimpleDialog(
       title: Container(
@@ -156,6 +157,11 @@ class _Afkeur extends State<Afkeur> {
                       borderRadius: BorderRadius.circular(13),
                     )
                   ),
+                  onChanged: (String value){
+                    setState(() {
+                      inputMortalitas = int.parse(value);
+                    });
+                  },
                 ),
               ),
               SizedBox(height: 25,),
@@ -171,7 +177,7 @@ class _Afkeur extends State<Afkeur> {
                         color: Color(0xff293462),
                       ),
                       child: Text(
-                          'Ok',
+                          'input',
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
                                   fontSize: 14,
@@ -182,6 +188,10 @@ class _Afkeur extends State<Afkeur> {
                       ),
                     ),
                     onTap: (){
+                      DB.database!.rawUpdate(
+                          '''UPDATE ${DB.tableName} SET mortalitas = ${inputMortalitas}'''
+                      );
+                      afkeurController.getAfkeurData();
                       Navigator.pop(context);
                     },
                   ),
@@ -195,7 +205,7 @@ class _Afkeur extends State<Afkeur> {
                         color: Color(0xffFF4A4A),
                       ),
                       child: Text(
-                          'Cancel',
+                          'cancel',
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
                                   fontSize: 14,
@@ -420,15 +430,46 @@ class _Afkeur extends State<Afkeur> {
                                   ],
                                 ),
                                 SizedBox(height: 5),
-                                Text(
-                                  'Jumlah Ayam :''\n${afkeurModel.jumlahAyam} ekor (100%)',
-                                  style: GoogleFonts.lato(
-                                      textStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white
-                                      )
-                                  ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Jumlah Ayam :',
+                                      style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white
+                                          )
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          '${afkeurModel.jumlahAyam} ekor ayam',
+                                          style: GoogleFonts.lato(
+                                              textStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white
+                                              )
+                                          ),
+                                        ),
+                                        Text(
+                                          '100%',
+                                          style: GoogleFonts.lato(
+                                              textStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white
+                                              )
+                                          ),
+                                        )
+                                      ],
+                                    ),
+
+                                  ],
                                 ),
                                 SizedBox(height: 13),
                                 Container(
@@ -441,7 +482,7 @@ class _Afkeur extends State<Afkeur> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Mortalitas minggu 100 : ',
+                                      'Mortalitas minggu 100 :',
                                       style: GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,
@@ -454,7 +495,10 @@ class _Afkeur extends State<Afkeur> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'not displayed',
+                                          afkeurModel.mortalitas==0?
+                                          'Not Set'
+                                              :
+                                          '${afkeurModel.mortalitas} ekor ayam',
                                           style: GoogleFonts.lato(
                                               textStyle: TextStyle(
                                                   fontSize: 16,
@@ -463,16 +507,34 @@ class _Afkeur extends State<Afkeur> {
                                               )
                                           ),
                                         ),
-                                        GestureDetector(
-                                          child: Icon(
-                                            Icons.edit_document,
-                                            size: 22,
-                                            color: Colors.white,
-                                          ),
-                                          onTap: (){
-                                            input_Mortalitas(context, afkeurModel);
-                                          },
-                                        )
+                                        Row(
+                                          children: [
+                                            GestureDetector(
+                                              child: Icon(
+                                                Icons.restart_alt,
+                                                size: 22,
+                                                color: Colors.white,
+                                              ),
+                                              onTap: (){
+                                                setState(() {
+
+                                                  afkeurController.getAfkeurData();
+                                                });
+                                              },
+                                            ),
+                                            SizedBox(width: 10,),
+                                            GestureDetector(
+                                              child: Icon(
+                                                Icons.edit_document,
+                                                size: 22,
+                                                color: Colors.white,
+                                              ),
+                                              onTap: (){
+                                                input_Mortalitas(context, afkeurModel);
+                                              },
+                                            )
+                                          ],
+                                        ),
                                       ],
                                     )
                                   ],
@@ -482,7 +544,7 @@ class _Afkeur extends State<Afkeur> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Jumlah ayam tersisa : ',
+                                      'Jumlah ayam tersisa :',
                                       style: GoogleFonts.lato(
                                           textStyle: TextStyle(
                                               fontSize: 16,
@@ -495,7 +557,7 @@ class _Afkeur extends State<Afkeur> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'not displayed',
+                                          '${(afkeurModel.jumlahAyam! - afkeurModel.mortalitas!)} ekor ayam',
                                           style: GoogleFonts.lato(
                                               textStyle: TextStyle(
                                                   fontSize: 16,
@@ -504,6 +566,16 @@ class _Afkeur extends State<Afkeur> {
                                               )
                                           ),
                                         ),
+                                        Text(
+                                          '90%',
+                                          style: GoogleFonts.lato(
+                                              textStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white
+                                              )
+                                          ),
+                                        )
                                       ],
                                     )
                                   ],
@@ -545,6 +617,19 @@ class _Afkeur extends State<Afkeur> {
                                         ),
                                       ),
                                     ),
+                                    GestureDetector(
+                                      child: Icon(
+                                        Icons.warning_amber_outlined,
+                                        size: 22,
+                                        color: Colors.white,
+                                      ),
+                                      onTap: (){
+                                        setState(() {
+
+                                        });
+                                      },
+                                    ),
+                                    SizedBox(width: 10,),
                                     GestureDetector(
                                       child: Icon(
                                         Icons.restart_alt,

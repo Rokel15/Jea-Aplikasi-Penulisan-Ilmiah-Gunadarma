@@ -18,8 +18,11 @@ class DB{
             final sql =
             '''CREATE TABLE $tableName(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            startDate STRING, jumlahAyam INTEGER,
-            status INTEGER, endDate STRING)''';
+            startDate STRING,
+            jumlahAyam INTEGER,
+            status INTEGER,
+            endDate STRING,
+            mortalitas INTEGER)''';
             return db.execute(sql);
           });
     } catch(e){
