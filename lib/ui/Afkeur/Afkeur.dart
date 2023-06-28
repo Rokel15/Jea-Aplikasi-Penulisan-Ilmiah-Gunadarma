@@ -120,9 +120,10 @@ class _Afkeur extends State<Afkeur> {
           borderRadius: BorderRadius.circular(10),
           color: Colors.black,
         ),
-        child: Center(
+        child: Padding(
+          padding: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
           child: Text(
-            'Input total Mortalitas minggu 100',
+            'Input total Mortalitas di minggu ke 100',
             style: GoogleFonts.lato(
                 textStyle: TextStyle(
                     fontSize: 16,
@@ -189,7 +190,7 @@ class _Afkeur extends State<Afkeur> {
                     ),
                     onTap: (){
                       DB.database!.rawUpdate(
-                          '''UPDATE ${DB.tableName} SET mortalitas = ${inputMortalitas}'''
+                          '''UPDATE ${DB.tableName} SET mortalitas = ${inputMortalitas} WHERE id = ?''',[afkeurModel.id]
                       );
                       afkeurController.getAfkeurData();
                       Navigator.pop(context);
@@ -392,222 +393,25 @@ class _Afkeur extends State<Afkeur> {
                   itemBuilder: (_, index){
                     AfkeurModel afkeurModel = afkeurController.AfkeurList[index];
                     return AnimationConfiguration.staggeredList(
-                      position: index,
-                      child: SlideAnimation(
-                        child: FadeInAnimation(
-                          child: Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 18),
-                            padding: EdgeInsets.only(top: 13, left: 15, right: 15, bottom: 13),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Color(0xff3F497F)
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      '${afkeurModel.startDate}  -  ${afkeurModel.endDate}',
-                                      style: GoogleFonts.lato(
-                                        textStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white
-                                        )
-                                      ),
-                                    ),
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.delete_forever,
-                                        color: Colors.white,),
-                                      onPressed: (){
-                                        show_DeleteBottomSheet(context, afkeurController.AfkeurList[index]);
-                                      },
-                                    )
-                                  ],
-                                ),
-                                SizedBox(height: 5),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Jumlah Ayam :',
-                                      style: GoogleFonts.lato(
-                                          textStyle: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white
-                                          )
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          '${afkeurModel.jumlahAyam} ekor ayam',
-                                          style: GoogleFonts.lato(
-                                              textStyle: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.white
-                                              )
-                                          ),
-                                        ),
-                                        Text(
-                                          '100%',
-                                          style: GoogleFonts.lato(
-                                              textStyle: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.white
-                                              )
-                                          ),
-                                        )
-                                      ],
-                                    ),
-
-                                  ],
-                                ),
-                                SizedBox(height: 13),
-                                Container(
-                                  width: double.infinity,
-                                  height: 2.5,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(height: 13),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Mortalitas minggu 100 :',
-                                      style: GoogleFonts.lato(
-                                          textStyle: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white
-                                          )
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          afkeurModel.mortalitas==0?
-                                          'Not Set'
-                                              :
-                                          '${afkeurModel.mortalitas} ekor ayam',
-                                          style: GoogleFonts.lato(
-                                              textStyle: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.white
-                                              )
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            GestureDetector(
-                                              child: Icon(
-                                                Icons.restart_alt,
-                                                size: 22,
-                                                color: Colors.white,
-                                              ),
-                                              onTap: (){
-                                                setState(() {
-
-                                                  afkeurController.getAfkeurData();
-                                                });
-                                              },
-                                            ),
-                                            SizedBox(width: 10,),
-                                            GestureDetector(
-                                              child: Icon(
-                                                Icons.edit_document,
-                                                size: 22,
-                                                color: Colors.white,
-                                              ),
-                                              onTap: (){
-                                                input_Mortalitas(context, afkeurModel);
-                                              },
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                SizedBox(height: 13),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Jumlah ayam tersisa :',
-                                      style: GoogleFonts.lato(
-                                          textStyle: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white
-                                          )
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          '${(afkeurModel.jumlahAyam! - afkeurModel.mortalitas!)} ekor ayam',
-                                          style: GoogleFonts.lato(
-                                              textStyle: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.white
-                                              )
-                                          ),
-                                        ),
-                                        Text(
-                                          '90%',
-                                          style: GoogleFonts.lato(
-                                              textStyle: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.white
-                                              )
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                SizedBox(height: 13),
-                                Container(
-                                  width: double.infinity,
-                                  height: 2.5,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(height: 13),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Status : ',
-                                      style: GoogleFonts.lato(
-                                          textStyle: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white
-                                          )
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        afkeurModel.status==3?
-                                        'Not Set'
-                                            :
-                                        afkeurModel.status==1?
-                                        'Baik'
-                                            :
-                                        'Buruk',
+                        position: index,
+                        child: SlideAnimation(
+                          child: FadeInAnimation(
+                            child: Container(
+                              width: double.infinity,
+                              margin: EdgeInsets.only(bottom: 18),
+                              padding: EdgeInsets.only(top: 13, left: 15, right: 15, bottom: 13),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Color(0xff3F497F)
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        '${afkeurModel.startDate}  -  ${afkeurModel.endDate}',
                                         style: GoogleFonts.lato(
                                             textStyle: TextStyle(
                                                 fontSize: 16,
@@ -616,53 +420,250 @@ class _Afkeur extends State<Afkeur> {
                                             )
                                         ),
                                       ),
-                                    ),
-                                    GestureDetector(
-                                      child: Icon(
-                                        Icons.warning_amber_outlined,
-                                        size: 22,
-                                        color: Colors.white,
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete_forever,
+                                          color: Colors.white,),
+                                        onPressed: (){
+                                          show_DeleteBottomSheet(context, afkeurController.AfkeurList[index]);
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Jumlah Ayam :',
+                                        style: GoogleFonts.lato(
+                                            textStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white
+                                            )
+                                        ),
                                       ),
-                                      onTap: (){
-                                        setState(() {
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '${afkeurModel.jumlahAyam} ekor ayam',
+                                            style: GoogleFonts.lato(
+                                                textStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white
+                                                )
+                                            ),
+                                          ),
+                                          Text(
+                                            '100%',
+                                            style: GoogleFonts.lato(
+                                                textStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white
+                                                )
+                                            ),
+                                          )
+                                        ],
+                                      ),
 
-                                        });
-                                      },
-                                    ),
-                                    SizedBox(width: 10,),
-                                    GestureDetector(
-                                      child: Icon(
-                                        Icons.restart_alt,
-                                        size: 22,
-                                        color: Colors.white,
+                                    ],
+                                  ),
+                                  SizedBox(height: 13),
+                                  Container(
+                                    width: double.infinity,
+                                    height: 2.5,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(height: 13),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Mortalitas minggu 100 :',
+                                        style: GoogleFonts.lato(
+                                            textStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white
+                                            )
+                                        ),
                                       ),
-                                      onTap: (){
-                                        setState(() {
-                                          afkeurController.status3(afkeurModel.id!);
-                                          afkeurController.getAfkeurData();
-                                        });
-                                      },
-                                    ),
-                                    SizedBox(width: 10,),
-                                    GestureDetector(
-                                      child: Icon(
-                                        Icons.edit_document,
-                                        size: 22,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            afkeurModel.mortalitas==0?
+                                            'Not Set'
+                                                :
+                                            '${afkeurModel.mortalitas} ekor ayam',
+                                            style: GoogleFonts.lato(
+                                                textStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white
+                                                )
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                child: Icon(
+                                                  Icons.restart_alt,
+                                                  size: 22,
+                                                  color: Colors.white,
+                                                ),
+                                                onTap: (){
+                                                  setState(() {
+
+                                                    afkeurController.getAfkeurData();
+                                                  });
+                                                },
+                                              ),
+                                              SizedBox(width: 10,),
+                                              GestureDetector(
+                                                child: Icon(
+                                                  Icons.edit_document,
+                                                  size: 22,
+                                                  color: Colors.white,
+                                                ),
+                                                onTap: (){
+                                                  input_Mortalitas(context, afkeurModel);
+                                                },
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: 13),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Jumlah ayam tersisa :',
+                                        style: GoogleFonts.lato(
+                                            textStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white
+                                            )
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            /*'${(afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)}*/ 'ekor ayam',
+                                            style: GoogleFonts.lato(
+                                                textStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white
+                                                )
+                                            ),
+                                          ),
+                                          Text(
+                                            '?%',
+                                            style: GoogleFonts.lato(
+                                                textStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white
+                                                )
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: 13),
+                                  Container(
+                                    width: double.infinity,
+                                    height: 2.5,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(height: 13),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Status : ',
+                                        style: GoogleFonts.lato(
+                                            textStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white
+                                            )
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          afkeurModel.status==3?
+                                          'Not Set'
+                                              :
+                                          afkeurModel.status==1?
+                                          'Baik'
+                                              :
+                                          'Buruk',
+                                          style: GoogleFonts.lato(
+                                              textStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white
+                                              )
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        child: Icon(
+                                          Icons.warning_amber_outlined,
+                                          size: 22,
                                           color: Colors.white,
+                                        ),
+                                        onTap: (){
+                                          setState(() {
+
+                                          });
+                                        },
                                       ),
-                                      onTap: (){
-                                        show_UpdateBottomSheet(context, afkeurModel);
-                                      },
-                                    )
-                                  ],
-                                )
-                              ],
+                                      SizedBox(width: 10,),
+                                      GestureDetector(
+                                        child: Icon(
+                                          Icons.restart_alt,
+                                          size: 22,
+                                          color: Colors.white,
+                                        ),
+                                        onTap: (){
+                                          setState(() {
+                                            afkeurController.status3(afkeurModel.id!);
+                                            afkeurController.getAfkeurData();
+                                          });
+                                        },
+                                      ),
+                                      SizedBox(width: 10,),
+                                      GestureDetector(
+                                        child: Icon(
+                                          Icons.edit_document,
+                                          size: 22,
+                                          color: Colors.white,
+                                        ),
+                                        onTap: (){
+                                          show_UpdateBottomSheet(context, afkeurModel);
+                                        },
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    }
                 );
               }),
             ),
