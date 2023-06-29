@@ -48,6 +48,9 @@ class DB{
     return await database!.delete(tableName, where: 'id=?', whereArgs: [afkeurModel.id]);
   }
 
+  //update reset mortalitas
+  // static
+
   //update status 0
   static updateStatus0(int id) async{
     return await database!.rawUpdate(

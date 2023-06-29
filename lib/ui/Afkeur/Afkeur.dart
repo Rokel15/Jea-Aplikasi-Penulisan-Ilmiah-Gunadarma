@@ -27,7 +27,7 @@ class _Afkeur extends State<Afkeur> {
         ),
         child: Center(
           child: Text(
-            'Check Activities',
+            'Deplesi',
             style: GoogleFonts.lato(
                 textStyle: TextStyle(
                     fontSize: 16,
@@ -482,24 +482,11 @@ class _Afkeur extends State<Afkeur> {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'Mortalitas minggu 100 :',
-                                        style: GoogleFonts.lato(
-                                            textStyle: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.white
-                                            )
-                                        ),
-                                      ),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            afkeurModel.mortalitas==0?
-                                            'Not Set'
-                                                :
-                                            '${afkeurModel.mortalitas} ekor ayam',
+                                            'Mortalitas minggu 100 :',
                                             style: GoogleFonts.lato(
                                                 textStyle: TextStyle(
                                                     fontSize: 16,
@@ -537,6 +524,34 @@ class _Afkeur extends State<Afkeur> {
                                             ],
                                           ),
                                         ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            afkeurModel.mortalitas==0?
+                                            'Not Set'
+                                                :
+                                            '${afkeurModel.mortalitas} ekor ayam',
+                                            style: GoogleFonts.lato(
+                                                textStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white
+                                                )
+                                            ),
+                                          ),
+                                          Text(
+                                            '${((afkeurModel.mortalitas ?? 0) * 100) / (afkeurModel.jumlahAyam ?? 0)}%',
+                                            style: GoogleFonts.lato(
+                                                textStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white
+                                                )
+                                            ),
+                                          )
+                                        ],
                                       )
                                     ],
                                   ),
@@ -558,7 +573,7 @@ class _Afkeur extends State<Afkeur> {
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            /*'${(afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)}*/ 'ekor ayam',
+                                            '${(afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)} ekor ayam',
                                             style: GoogleFonts.lato(
                                                 textStyle: TextStyle(
                                                     fontSize: 16,
@@ -568,7 +583,7 @@ class _Afkeur extends State<Afkeur> {
                                             ),
                                           ),
                                           Text(
-                                            '?%',
+                                            '${(((afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)) * 100) / (afkeurModel.jumlahAyam ?? 0)}?%',
                                             style: GoogleFonts.lato(
                                                 textStyle: TextStyle(
                                                     fontSize: 16,
