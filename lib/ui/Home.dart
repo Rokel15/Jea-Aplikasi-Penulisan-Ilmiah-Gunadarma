@@ -377,7 +377,7 @@ class _HomeState extends State<Home> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Afkeur',
+                              'Deplesi',
                               style: GoogleFonts.lato(
                                   textStyle: TextStyle(
                                       fontSize: 20,
@@ -409,11 +409,20 @@ class _HomeState extends State<Home> {
                               color: Colors.white
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
+                        SizedBox(height: 10,),
                         Text(
-                          '> Pelepasan ayam untuk diambil dagingnya ketika ayam sudah tidak bagus masa produktivitasnya dalam menghasilkan telur ataupun karena harga telur di pasar yang rusak.',
+                          '> Deplesi merupakan penyusutan jumlah ayam yang disebabkan kematian dan afkir(culling).',
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                              )
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        SizedBox(height: 10,),
+                        Text(
+                          '> Sedangkan afkir adalah pelepasan ayam untuk diambil dagingnya ketika ayam sudah tidak bagus masa produktivitasnya dalam menghasilkan telur ataupun karena harga telur di pasar yang rusak.',
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
                                 fontSize: 14,
