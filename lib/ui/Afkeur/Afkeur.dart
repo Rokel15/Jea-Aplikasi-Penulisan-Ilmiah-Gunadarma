@@ -27,7 +27,7 @@ class _Afkeur extends State<Afkeur> {
         ),
         child: Center(
           child: Text(
-            'Deplesi',
+            'Deplesi List',
             style: GoogleFonts.lato(
                 textStyle: TextStyle(
                     fontSize: 16,
@@ -50,7 +50,7 @@ class _Afkeur extends State<Afkeur> {
                 padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
                 child: Center(
                     child: Text(
-                      'This screen displays track records of employees daily values',
+                      'in this page, you can add a starting date for chick in and estimated/predicted date chick out.',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
@@ -64,7 +64,7 @@ class _Afkeur extends State<Afkeur> {
                 padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
                 child: Center(
                     child: Text(
-                      'You can also delete the old track record and add a new track record or more',
+                      'and next you can add a total of mortalities, so you can evaluate the productivity of the chikens',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
@@ -235,6 +235,99 @@ class _Afkeur extends State<Afkeur> {
           return simpleDialog;
         });
   }
+  Future<Null> Ket_Status(BuildContext context) async{
+    var simpleDialog = SimpleDialog(
+      title: Container(
+        width: double.infinity,
+        padding: EdgeInsets.only(top: 5, bottom: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.black,
+        ),
+        child: Center(
+          child: Text(
+            'Deplesi List',
+            style: GoogleFonts.lato(
+                textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                )
+            ),
+          ),
+        ),
+      ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+      ),
+      children: <Widget>[
+        Material(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
+                child: Center(
+                    child: Text(
+                      'in this page, you can add a starting date for chick in and estimated/predicted date chick out.',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+                          )
+                      ),
+                    )),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
+                child: Center(
+                    child: Text(
+                      'and next you can add a total of mortalities, so you can evaluate the productivity of the chikens',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+                          )
+                      ),
+                    )),
+              ),
+              GestureDetector(
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 8),
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20 ,bottom: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.grey[600]
+                  ),
+                  child: Text(
+                      'Ok',
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white
+                          )
+                      )
+                  ),
+                ),
+                onTap: (){
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return simpleDialog;
+        });
+  }
 
   final AfkeurController afkeurController = Get.put(AfkeurController());
 
@@ -381,6 +474,7 @@ class _Afkeur extends State<Afkeur> {
                 ),
               ),
             ),
+            //list
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(top: 25),
@@ -505,7 +599,7 @@ class _Afkeur extends State<Afkeur> {
                                                 ),
                                                 onTap: (){
                                                   setState(() {
-
+                                                    afkeurController.mortalitas0(afkeurModel.id!);
                                                     afkeurController.getAfkeurData();
                                                   });
                                                 },
@@ -640,9 +734,7 @@ class _Afkeur extends State<Afkeur> {
                                           color: Colors.white,
                                         ),
                                         onTap: (){
-                                          setState(() {
-
-                                          });
+                                          Ket_Status(context);
                                         },
                                       ),
                                       SizedBox(width: 10,),

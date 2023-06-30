@@ -49,7 +49,12 @@ class DB{
   }
 
   //update reset mortalitas
-  // static
+  static resetMortalitas(int id) async{
+    return await database!.rawUpdate(
+      '''UPDATE $tableName SET mortalitas = 0 where id = ?''',
+      [id]
+    );
+  }
 
   //update status 0
   static updateStatus0(int id) async{

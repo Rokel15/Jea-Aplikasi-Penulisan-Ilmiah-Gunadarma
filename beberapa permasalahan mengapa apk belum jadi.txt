@@ -2,6 +2,4 @@ App Icon
 Penamaan Aplikasi
 Pengertian deplesi pada tampilan home
 penjelasan pada warna label kegiatan
-keterangan pada fitur deplesi
-tombol reset mortalitas
 tombol warning label

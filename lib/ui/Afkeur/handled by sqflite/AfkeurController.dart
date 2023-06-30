@@ -28,6 +28,11 @@ class AfkeurController extends GetxController{
     DB.delete(afkeurModel);
   }
 
+  //update reset mortalitas
+  void mortalitas0(int id) async{
+    await DB.resetMortalitas(id);
+  }
+
   //update kondisi menjadi 0
   void status0(int id) async{
     await DB.updateStatus0(id);
