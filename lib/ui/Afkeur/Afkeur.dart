@@ -193,6 +193,7 @@ class _Afkeur extends State<Afkeur> {
                           '''UPDATE ${DB.tableName} SET mortalitas = ${inputMortalitas} WHERE id = ?''',[afkeurModel.id]
                       );
                       afkeurController.getAfkeurData();
+                      inputMortalitas = 0;
                       Navigator.pop(context);
                     },
                   ),
@@ -636,7 +637,7 @@ class _Afkeur extends State<Afkeur> {
                                             ),
                                           ),
                                           Text(
-                                            '${((afkeurModel.mortalitas ?? 0) * 100) / (afkeurModel.jumlahAyam ?? 0)}%',
+                                            '${(((afkeurModel.mortalitas ?? 0) * 100) / (afkeurModel.jumlahAyam ?? 0)).toStringAsFixed(2)}%',
                                             style: GoogleFonts.lato(
                                                 textStyle: TextStyle(
                                                     fontSize: 16,
@@ -677,7 +678,7 @@ class _Afkeur extends State<Afkeur> {
                                             ),
                                           ),
                                           Text(
-                                            '${(((afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)) * 100) / (afkeurModel.jumlahAyam ?? 0)}?%',
+                                            '${((((afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)) * 100) / (afkeurModel.jumlahAyam ?? 0)).toStringAsFixed(2)}?%',
                                             style: GoogleFonts.lato(
                                                 textStyle: TextStyle(
                                                     fontSize: 16,
