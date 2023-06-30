@@ -678,7 +678,7 @@ class _Afkeur extends State<Afkeur> {
                                             ),
                                           ),
                                           Text(
-                                            '${((((afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)) * 100) / (afkeurModel.jumlahAyam ?? 0)).toStringAsFixed(2)}?%',
+                                            '${((((afkeurModel.jumlahAyam ?? 0) - (afkeurModel.mortalitas ?? 0)) * 100) / (afkeurModel.jumlahAyam ?? 0)).toStringAsFixed(2)}%',
                                             style: GoogleFonts.lato(
                                                 textStyle: TextStyle(
                                                     fontSize: 16,
