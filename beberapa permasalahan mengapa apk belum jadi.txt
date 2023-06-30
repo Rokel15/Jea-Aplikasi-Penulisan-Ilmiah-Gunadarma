@@ -1,5 +1,4 @@
 App Icon
 Penamaan Aplikasi
-Pengertian deplesi pada tampilan home
 penjelasan pada warna label kegiatan
 pengurutan tanggal kegiatan
