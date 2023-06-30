@@ -5,6 +5,7 @@ class AfkeurModel{
   int? status;
   String? endDate;
   int? mortalitas;
+  String? entryTime;
 
   AfkeurModel({
     this.id,
@@ -12,7 +13,8 @@ class AfkeurModel{
     this.jumlahAyam,
     this.status,
     this.endDate,
-    this.mortalitas
+    this.mortalitas,
+    this.entryTime
   });
 
   //toJson
@@ -24,6 +26,7 @@ class AfkeurModel{
     data['status'] = this.status;
     data['endDate'] = this.endDate;
     data['mortalitas'] = this.mortalitas;
+    data['entryTime'] = this.entryTime;
     return data;
   }
 
@@ -35,5 +38,6 @@ class AfkeurModel{
     status = json['status'];
     endDate = json['endDate'];
     mortalitas = json['mortalitas'];
+    entryTime = json['entryTime'];
   }
 }

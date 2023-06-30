@@ -246,7 +246,7 @@ class _Afkeur extends State<Afkeur> {
         ),
         child: Center(
           child: Text(
-            'Deplesi List',
+            'Keterangan',
             style: GoogleFonts.lato(
                 textStyle: TextStyle(
                     fontSize: 16,
@@ -266,10 +266,10 @@ class _Afkeur extends State<Afkeur> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
+                padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
                 child: Center(
                     child: Text(
-                      'in this page, you can add a starting date for chick in and estimated/predicted date chick out.',
+                      'Beri status baik jika mortalitas mimggu ke 100 pada ayam < 10%',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
@@ -280,10 +280,10 @@ class _Afkeur extends State<Afkeur> {
                     )),
               ),
               Container(
-                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
+                padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 25),
                 child: Center(
                     child: Text(
-                      'and next you can add a total of mortalities, so you can evaluate the productivity of the chikens',
+                      'Beri status buruk jika mortalitas mimggu ke 100 pada ayam > 10%',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(

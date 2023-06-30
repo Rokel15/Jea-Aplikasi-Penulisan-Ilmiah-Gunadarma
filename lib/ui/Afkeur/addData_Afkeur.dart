@@ -29,7 +29,7 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
 
     if (setTglMulai != null && setTglMulai != DateTime.now()) {
       setState(() {
-        startDate = DateFormat.yMMMd().format(setTglMulai).toString();
+        startDate = DateFormat.yMd().format(setTglMulai).toString();
       });
     }
   }
@@ -43,7 +43,7 @@ class _addData_AfkeurState extends State<addData_Afkeur> {
 
     if (setTglBerakhir != null && setTglBerakhir != DateTime.now()) {
       setState(() {
-        endDate = DateFormat.yMMMd().format(setTglBerakhir).toString();
+        endDate = DateFormat.yMd().format(setTglBerakhir).toString();
       });
     }
   }

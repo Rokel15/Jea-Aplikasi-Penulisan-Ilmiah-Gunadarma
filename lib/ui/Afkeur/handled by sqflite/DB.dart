@@ -13,7 +13,7 @@ class DB{
       String path = await getDatabasesPath() + '/afkeur.db';
       database = await openDatabase(
           path,
-          version: 1,
+          version: 3,
           onCreate: (db, version){
             final sql =
             '''CREATE TABLE $tableName(
@@ -22,7 +22,9 @@ class DB{
             jumlahAyam INTEGER,
             status INTEGER,
             endDate STRING,
-            mortalitas INTEGER)''';
+            mortalitas INTEGER,
+            entryTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''';
             return db.execute(sql);
           });
     } catch(e){
@@ -39,7 +41,7 @@ class DB{
   static Future<List<Map<String, dynamic>>> query() async{
     return await database!.query(
       tableName,
-      orderBy: 'endDate ASC'
+      orderBy: 'entryTime ASC'
     );
   }
 

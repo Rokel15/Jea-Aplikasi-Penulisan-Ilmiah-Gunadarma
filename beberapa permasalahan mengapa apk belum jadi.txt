@@ -2,4 +2,4 @@ App Icon
 Penamaan Aplikasi
 Pengertian deplesi pada tampilan home
 penjelasan pada warna label kegiatan
-tombol warning label
+pengurutan tanggal kegiatan
