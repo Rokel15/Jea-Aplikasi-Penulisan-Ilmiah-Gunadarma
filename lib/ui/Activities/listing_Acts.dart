@@ -59,7 +59,7 @@ class _listing_ActsState extends State<listing_Acts> {
     }
   }
 
-  int pilihKategori = 0;
+  int? pilihKategori;
 
   void onKegiatan1(bool? value1){
     setState(() {
@@ -124,6 +124,105 @@ class _listing_ActsState extends State<listing_Acts> {
         scoreAct5 = 0;
       }
     });
+  }
+
+  Future<Null> KeteranganKategori(BuildContext context) async{
+    var simpleDialog = SimpleDialog(
+      title: Container(
+        width: double.infinity,
+        padding: EdgeInsets.only(top: 5, bottom: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.black,
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 3, bottom: 3),
+            child: Text(
+              'Keterangan Kategori',
+              style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white
+                  )
+              ),
+            ),
+          ),
+        ),
+      ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+      ),
+      // backgroundColor: Colors.black87,
+      children: <Widget>[
+        Material(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
+                child: Center(
+                    child: Text(
+                      'Beri warna /*Colors.pink[600]*/ jika sudah waktunya melakukan pelebaran sekat kandang',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+                          )
+                      ),
+                    )),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
+                child: Center(
+                    child: Text(
+                      'Beri warna /*Colors.deepPurple*/ jika belum waktunya melakukan pelebaran sekat kandang',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600
+                          )
+                      ),
+                    )),
+              ),
+              GestureDetector(
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 8),
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20 ,bottom: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.grey[600]
+                  ),
+                  child: Text(
+                      'Ok',
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white
+                          )
+                      )
+                  ),
+                ),
+                onTap: (){
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        ),
+
+      ],
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return simpleDialog;
+        });
   }
 
   @override
@@ -199,10 +298,7 @@ class _listing_ActsState extends State<listing_Acts> {
                       ),
                     ),
                   ),
-                  Divider(
-                    thickness: 2.5,
-                    color: Colors.black,
-                  ),
+                  Divider(thickness: 2.5, color: Colors.black,),
 
                   //Kegiatan 1
                   Container(
@@ -242,10 +338,7 @@ class _listing_ActsState extends State<listing_Acts> {
                       ),
                     ),
                   ),
-                  Divider(
-                    thickness: 2.5,
-                    color: Colors.black,
-                  ),
+                  Divider(thickness: 2.5, color: Colors.black,),
 
                   //Kegiatan 2
                   Container(
@@ -285,10 +378,7 @@ class _listing_ActsState extends State<listing_Acts> {
                       ),
                     ),
                   ),
-                  Divider(
-                    thickness: 2.5,
-                    color: Colors.black,
-                  ),
+                  Divider(thickness: 2.5, color: Colors.black,),
 
                   //Kegiatan 3
                   Container(
@@ -328,10 +418,7 @@ class _listing_ActsState extends State<listing_Acts> {
                       ),
                     ),
                   ),
-                  Divider(
-                    thickness: 2.5,
-                    color: Colors.black,
-                  ),
+                  Divider(thickness: 2.5, color: Colors.black,),
 
                   //Kegiatan 4
                   Container(
@@ -371,10 +458,7 @@ class _listing_ActsState extends State<listing_Acts> {
                       ),
                     ),
                   ),
-                  Divider(
-                    thickness: 2.5,
-                    color: Colors.black,
-                  ),
+                  Divider(thickness: 2.5, color: Colors.black,),
 
                   //Kegiatan 5
                   Container(
@@ -414,24 +498,36 @@ class _listing_ActsState extends State<listing_Acts> {
                       ),
                     ),
                   ),
-                  Divider(
-                    thickness: 2.5,
-                    color: Colors.black,
-                  ),
+                  Divider(thickness: 2.5, color: Colors.black,),
 
                   //Klasifikasi
                   Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(top: 15, bottom: 15),
                     child: ListTile(
-                      title: Text(
-                        'Kategori',
-                        style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600
+                      title: Row(
+                        children: [
+                          Text(
+                            'Kategori',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              )
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          GestureDetector(
+                            child: Icon(
+                              Icons.warning_amber,
+                              size: 26,
+                              color: Colors.black,
+                            ),
+                            onTap: (){
+                              KeteranganKategori(context);
+                            },
                           )
-                        ),
+                        ],
                       ),
                       trailing: Wrap(
                           children: List<Widget>.generate(
@@ -463,10 +559,7 @@ class _listing_ActsState extends State<listing_Acts> {
                     )
 
                   ),
-                  Divider(
-                    thickness: 2.5,
-                    color: Colors.black,
-                  ),
+                  Divider(thickness: 2.5, color: Colors.black,),
 
                   //Total Scroe
                   Container(
