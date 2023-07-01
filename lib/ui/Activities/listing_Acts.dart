@@ -162,31 +162,63 @@ class _listing_ActsState extends State<listing_Acts> {
             children: [
               Container(
                 padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
-                child: Center(
-                    child: Text(
-                      'Beri warna /*Colors.pink[600]*/ jika sudah waktunya melakukan pelebaran sekat kandang',
-                      textAlign: TextAlign.center,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Beri warna /*Colors.pink[600]*/',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600
+                              )
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'jika sudah waktunya melakukan pelebaran sekat kandang',
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600
                           )
                       ),
-                    )),
+                    )
+                  ],
+                ),
               ),
               Container(
                 padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
-                child: Center(
-                    child: Text(
-                      'Beri warna /*Colors.deepPurple*/ jika belum waktunya melakukan pelebaran sekat kandang',
-                      textAlign: TextAlign.center,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Beri warna /*Colors.deepPurple*/',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600
+                              )
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'jika belum waktunya melakukan pelebaran sekat kandang',
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600
                           )
                       ),
-                    )),
+                    )
+                  ],
+                ),
               ),
               GestureDetector(
                 child: Container(
@@ -228,6 +260,9 @@ class _listing_ActsState extends State<listing_Acts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(0),
+          child: AppBar()),
       body: ListView(
         children: [
           //Head
