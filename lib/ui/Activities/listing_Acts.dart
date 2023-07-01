@@ -161,13 +161,13 @@ class _listing_ActsState extends State<listing_Acts> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
+                padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Text(
-                          'Beri warna /*Colors.pink[600]*/',
+                          'Beri warna ',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
@@ -176,6 +176,11 @@ class _listing_ActsState extends State<listing_Acts> {
                               )
                           ),
                         ),
+                        Container(
+                          width: 18,
+                          height: 18,
+                          color: Colors.pink[600],
+                        )
                       ],
                     ),
                     Text(
@@ -191,13 +196,13 @@ class _listing_ActsState extends State<listing_Acts> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 25),
+                padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 25),
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Text(
-                          'Beri warna /*Colors.deepPurple*/',
+                          'Beri warna ',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
@@ -206,6 +211,11 @@ class _listing_ActsState extends State<listing_Acts> {
                               )
                           ),
                         ),
+                        Container(
+                          width: 18,
+                          height: 18,
+                          color: Colors.deepPurple,
+                        )
                       ],
                     ),
                     Text(
@@ -246,7 +256,6 @@ class _listing_ActsState extends State<listing_Acts> {
             ],
           ),
         ),
-
       ],
     );
 
