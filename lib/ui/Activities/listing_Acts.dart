@@ -167,7 +167,7 @@ class _listing_ActsState extends State<listing_Acts> {
                     Row(
                       children: [
                         Text(
-                          'Beri warna ',
+                          'Beri warna  ',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
@@ -202,7 +202,7 @@ class _listing_ActsState extends State<listing_Acts> {
                     Row(
                       children: [
                         Text(
-                          'Beri warna ',
+                          'Beri warna  ',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
                               textStyle: TextStyle(
