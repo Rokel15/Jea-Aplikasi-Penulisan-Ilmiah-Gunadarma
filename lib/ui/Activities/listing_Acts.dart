@@ -59,7 +59,7 @@ class _listing_ActsState extends State<listing_Acts> {
     }
   }
 
-  int? pilihKategori;
+  int pilihKategori = 1;
 
   void onKegiatan1(bool? value1){
     setState(() {
@@ -643,7 +643,8 @@ class _listing_ActsState extends State<listing_Acts> {
             'Kegiatan 4' : Tugas4,
             'Kegiatan 5' : Tugas5,
             'Total Nilai' : scoreAct1+scoreAct2+scoreAct3+scoreAct4+scoreAct5,
-            'Kategori' : pilihKategori
+            'Kategori' : pilihKategori,
+            'entryTime' : tanggal,
           });
           Get.back();
         },

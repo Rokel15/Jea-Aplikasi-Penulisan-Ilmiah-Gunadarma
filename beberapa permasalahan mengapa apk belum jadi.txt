@@ -1,4 +1,3 @@
 App Icon
 Penamaan Aplikasi
-penjelasan pada warna label kegiatan
 pengurutan tanggal kegiatan

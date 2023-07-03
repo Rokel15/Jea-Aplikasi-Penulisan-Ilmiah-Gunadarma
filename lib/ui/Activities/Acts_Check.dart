@@ -291,9 +291,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                               )
                             ],
                           ),
-                          SizedBox(
-                            height: 3,
-                          ),
+                          SizedBox(height: 3,),
                           Container(
                             width: double.infinity,
                             height: 5,
@@ -308,7 +306,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                     Container(
                       width: double.infinity,
                       child: StreamBuilder<QuerySnapshot>(
-                        stream: Activities.orderBy('Tanggal', descending: true).snapshots(),
+                        stream: Activities.orderBy('entryTime', descending: false).snapshots(),
                         builder: (_, snapshot){
                           if (snapshot.hasData){
                             return Column(
