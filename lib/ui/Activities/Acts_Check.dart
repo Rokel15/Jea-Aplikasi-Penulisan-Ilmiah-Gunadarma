@@ -306,7 +306,7 @@ class _Acts_ChecksState extends State<Acts_Checks> {
                     Container(
                       width: double.infinity,
                       child: StreamBuilder<QuerySnapshot>(
-                        stream: Activities.orderBy('entryTime', descending: false).snapshots(),
+                        stream: Activities.orderBy('entryTime', descending: true).snapshots(),
                         builder: (_, snapshot){
                           if (snapshot.hasData){
                             return Column(

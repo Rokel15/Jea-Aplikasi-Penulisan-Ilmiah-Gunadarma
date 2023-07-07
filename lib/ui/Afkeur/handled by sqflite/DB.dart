@@ -13,7 +13,7 @@ class DB{
       String path = await getDatabasesPath() + '/afkeur.db';
       database = await openDatabase(
           path,
-          version: 3,
+          version: 4,
           onCreate: (db, version){
             final sql =
             '''CREATE TABLE $tableName(
@@ -41,7 +41,7 @@ class DB{
   static Future<List<Map<String, dynamic>>> query() async{
     return await database!.query(
       tableName,
-      orderBy: 'entryTime ASC'
+      orderBy: 'entryTime DESC'
     );
   }
 
